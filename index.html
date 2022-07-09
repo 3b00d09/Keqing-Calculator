@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <script type = "module" src = "main.js"></script>
+        <link rel ="stylesheet" href="styles.css">
+        <title>Homepage</title>
+    </head>
+
+    <body>
+        <div class = "container calcbody">
+            <div id = "basic-view">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <img style = "width: 106px; height: 106px;" src ="Keqing.png">
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-8"  style = "text-align: center;">
+                        <h2>Keqing Gear Comparision Calculator</h2>
+                        <p>By 3b00d_09#2235</p>
+                    </div>
+                </div>
+
+                <div>
+                    <button class = "view-button" onclick = "basicView()"> Basic View </button>
+                    <button class = "view-button"onclick = "advancedView()"> Advanced View </button>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <p class ="set rowsa">Set One</p>     
+                        <div class = "row">
+                            <div class ="col-sm-6"><label>Character Base Attack</label></div>
+                            <div class = "col-sm-6"><input type = "number" id = "baseatk" name = "Character Base ATK"></div>
+                        </div>                  
+                            <div class = "row">
+                                <div class ="col-sm-6"><label>Total Character Attack:</label></div>
+                                <div class = "col-sm-6"><input type = "number" id = "atk" name = "Total Character ATK:"></div>
+                            </div>
+            
+                            <div class="row">
+                                <div class = "col-sm-6">                       
+                                    <label>Character Crit Rate:</label></div>
+                                <div class = "col-sm-6">                   
+                                    <input type = "number" id = "cr" name = "Crit Rate:" ></div>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-6">                       
+                                    <label>Character Crit Damage:</label></div>
+                                <div class = "col-sm-6">                   
+                                    <input type = "number" id = "cd" name = "Crit Damage:"></div>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-6">                       
+                                    <label>Goblet / Infusion Type</label></div>
+                                <div class = "col-sm-6">                   
+                                    <select id = "goblet" name = "Damage%">
+                                        <option value = "elec">Electro</option>
+                                        <option value = "phys">Physical</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-6">                       
+                                    <label>Artifacts First Set Bonus</label></div>
+                                <div class = "col-sm-6">                   
+                                    <select id="artifacts-2piece-set1" name ="Artifacts">
+                                        <option id = "Select Artifacts2">Select Set</option>
+                                        <option value="ThunderingFury2p">2-Piece Thundering Fury</option>
+                                        <option>2-Piece Gladiator's Finale</option>
+                                        <option>2-Piece Shimenawa's Reminiscence</option>
+                                        <option>2-Piece Thundersoother</option>
+                                        <option value="PaleFlame2p">2-Piece Pale Flame</option>
+                                        <option value="BSC22p">2-Piece Bloodstained Chivalry</option>
+                                        <option value="Noblesse2p">2-Piece Noblesse Oblige</option>
+                                        <option value = "other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class ="col-sm-6" id = "artifacts-2piece-set1-1"></div>
+                                <div class ="col-sm-6" id = "artifacts-2piece-set1-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-6">                       
+                                    <label>Artifacts Second Set Bonus</label></div>
+                                <div class = "col-sm-6">                   
+                                    <select id="artifacts-4piece-set1" name ="Artifacts">
+                                        <option id = "Select Artifacts">Select Set</option>
+                                        <option value="Thundering Fury2p">2-Piece Thundering Fury</option>
+                                        <option>2-Piece Gladiator's Finale</option>
+                                        <option>2-Piece Shimenawa's Reminiscence</option>
+                                        <option value="PaleFlame2p">2-Piece Pale Flame</option>
+                                        <option value="BSC2p">2-Piece Bloodstained Chivalry</option>
+                                        <option value="Noblesse2p">2-Piece Noblesse Oblige</option>
+                                        <option value="PaleFlame4p">4-Piece Pale Flame</option>
+                                        <option value="Thundersoother4p">4-Piece Thundersoother</option>
+                                        <option value="Gladiator4p">4-Piece Gladiator's Finale</option>
+                                        <option value="Shimenawa4p">4-Piece Shimenawa's Reminiscence</option>
+                                        <option value = "other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class ="col-sm-6" id = "artifacts-4piece-set1-1"></div>
+                                <div class ="col-sm-6" id = "artifacts-4piece-set1-2"></div>
+                            </div>
+                            <div class ="row">
+                                <div class = "col-sm-6">
+                                    <label>Normal Attack Talent Level</label>
+                                </div>
+                                <div class = "col-sm-6">
+                                    <select id ="normal_talent" name = "Normal Talent"></select>
+                                </div>
+                            </div>
+                            <div class ="row">
+                                <div class = "col-sm-6">
+                                    <label>Elemental Skill Talent Level</label>
+                                </div>
+                                <div class = "col-sm-6">
+                                    <select id ="skill_talent" name = "Skill Talent"></select>
+                                </div>
+                            </div>
+                            <div class ="row">
+                                <div class = "col-sm-6">
+                                    <label>Elemental Burst Talent Level</label>
+                                </div>
+                                <div class = "col-sm-6">
+                                    <select id ="burst_talent" name = "Burst Talent"></select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-6">                       
+                                    <label>Weapon</label></div>
+                                <div class = "col-sm-6">                   
+                                    <select id="weapon" name ="Weapons">
+                                        <option id ="Select Weapon">Select Weapon</option>
+                                        <option value="Mistsplitter">Mistsplitter Reforged</option>
+                                        <option value="Summit Shaper">Summit Shaper</option>
+                                        <option value="Lion's Roar">Lion's Roar</option>
+                                        <option value="BlackSword">The Black Sword</option>
+                                        <option value = "Aquila">Aquila Favonia</option>
+                                        <option value="BlackcliffLongsword">Blackcliff Longsword</option>
+                                        <option value="Rancour">Proto. Rancour</option>
+                                        <option value = "other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-6 id" id = "set-one-info1"></div>
+                                <div class = "col-sm-6" id = "set-one-info2"></div>
+                            </div>
+                            <div class = "row" id = "refine_row">
+                                <div class = "col-sm-6" id ="set-one-info3"></div>
+                                <div class = "col-sm-6" id = "set-one-info4"> </div>
+                            </div>
+                            <div class = "row">
+                                <div class = "col-sm-6">Display Damage As</div>
+                                <div class = "col-sm-6">
+                                    <select id = "display">
+                                        <option value = "avg">Average Damage</option>
+                                        <option value = "no-crit">Non Critical Hits</option>
+                                        <option value = "crit">Critical Hits</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="col-sm-6 text-center">
+                        <p class ="set">Set Two</p>    
+                        <div class = "row">
+                            <div class ="col-sm-6"><label>Character Base Attack</label></div>
+                            <div class = "col-sm-6"><input type = "number" id = "baseatk2" name = "Character Base ATK"></div>
+                        </div>                    
+                            <div class = "row">
+                                <div class ="col-sm-6"><label>Total Character Attack:</label></div>
+                                <div class = "col-sm-6"><input type = "number" id = "atk2" name = "Total Character ATK:"></div>
+                            </div>
+            
+                            <div class="row">
+                                <div class = "col-sm-6">                       
+                                    <label>Character Crit Rate:</label></div>
+                                <div class = "col-sm-6">                   
+                                    <input type = "number" id = "cr2" name = "Crit Rate:"></div>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-6">                       
+                                    <label>Character Crit Damage:</label></div>
+                                <div class = "col-sm-6">                   
+                                    <input type = "number" id = "cd2" name = "Crit Damagee:"></div>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-6">                       
+                                    <label>Goblet / Infusion Type</label></div>
+                                <div class = "col-sm-6">                   
+                                    <select id = "goblet2" name = "Damage%">
+                                        <option value = "elec2">Electro</option>
+                                        <option value = "phys2">Physical</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-6">                       
+                                    <label>Artifacts First Set Bonus</label></div>
+                                <div class = "col-sm-6">                   
+                                    <select id="artifacts-2piece-set2" name ="Artifacts">
+                                        <option id = "Select Artifacts2">Select Set</option>
+                                        <option value="ThunderingFury2p">2-Piece Thundering Fury</option>
+                                        <option>2-Piece Gladiator's Finale</option>
+                                        <option>2-Piece Shimenawa's Reminiscence</option>
+                                        <option>2-Piece Thundersoother</option>
+                                        <option value="Pale Flame">2-Piece Pale Flame</option>
+                                        <option value="BSC">2-Piece Bloodstained Chivalry</option>
+                                        <option value="Noblesse">2-Piece Noblesse Oblige</option>
+                                        <option value = "other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class ="col-sm-6" id = "artifacts-2piece-set2-1"></div>
+                                <div class ="col-sm-6" id = "artifacts-2piece-set2-2"></div>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-6">                       
+                                    <label>Artifacts Second Set Bonus</label></div>
+                                <div class = "col-sm-6">                   
+                                    <select id="artifacts-4piece-set2" name ="Artifacts">
+                                        <option id = "Select Artifacts2">Select Set</option>
+                                        <option value="Thundering Fury">2-Piece Thundering Fury</option>
+                                        <option>2-Piece Gladiator's Finale</option>
+                                        <option>2-Piece Shimenawa's Reminiscence</option>
+                                        <option value="Pale Flame">2-Piece Pale Flame</option>
+                                        <option value="BSC">2-Piece Bloodstained Chivalry</option>
+                                        <option value="Noblesse">2-Piece Noblesse Oblige</option>
+                                        <option value="Pale Flame 4p">4-Piece Pale Flame</option>
+                                        <option value="Thundersoother">4-Piece Thundersoother</option>
+                                        <option value="Gladiator">4-Piece Gladiator's Finale</option>
+                                        <option value="Shimenawa">4-Piece Shimenawa's Reminiscence</option>
+                                        <option value = "other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class = "row">
+                                <div class ="col-sm-6" id = "artifacts-4piece-set2-1"></div>
+                                <div class ="col-sm-6" id = "artifacts-4piece-set2-2"></div>
+                            </div>
+                            <div class ="row">
+                                <div class = "col-sm-6">
+                                    <label>Normal Attack Talent Level</label>
+                                </div>
+                                <div class = "col-sm-6">
+                                    <select id ="normal_talent_set2" name = "Normal Talent"></select>
+                                </div>
+                            </div>
+                            <div class ="row">
+                                <div class = "col-sm-6">
+                                    <label>Elemental Skill Talent Level</label>
+                                </div>
+                                <div class = "col-sm-6">
+                                    <select id ="skill_talent_set2" name = "Skill Talent"></select>
+                                </div>
+                            </div>
+                            <div class ="row">
+                                <div class = "col-sm-6">
+                                    <label>Elemental Burst Talent Level</label>
+                                </div>
+                                <div class = "col-sm-6">
+                                    <select id ="burst_talent_set2" name = "Burst Talent"></select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class = "col-sm-6">                       
+                                    <label>Weapon</label></div>
+                                <div class = "col-sm-6">                   
+                                    <select id="weapon2" name ="Weapons">
+                                        <option id = "Select Weapon2">Select Weapon</option>
+                                        <option value="Mistsplitter">Mistsplitter Reforged</option>
+                                        <option value="Summit Shaper">Summit Shaper</option>
+                                        <option value="Lion's Roar">Lion's Roar</option>
+                                        <option value="Black Sword">The Black Sword</option>
+                                        <option value = "Aquila">Aquila Favonia</option>
+                                        <option value="Blackcliff">Blackcliff Longsword</option>
+                                        <option value="Rancour">Proto. Rancour</option>
+                                        <option value = "other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-6 id" id = "set-two-info1"></div>
+                                <div class = "col-sm-6" id = "set-two-info2"></div>
+                            </div>
+                            <div class = "row" id = "refine_row_2">
+                                <div class = "col-sm-6" id ="set-two-info3"></div>
+                                <div class = "col-sm-6" id = "set-two-info4"> </div>
+                            </div>
+                            <div class = "row">
+                                <div class = "col-sm-6">Display Damage As</div>
+                                <div class = "col-sm-6">
+                                    <select id = "display-set2">
+                                        <option value = "avg">Average Damage</option>
+                                        <option value = "no-crit">Non Critical Hits</option>
+                                        <option value = "crit">Critical Hits</option>
+                                    </select>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                
+                <br>
+                <div class="row">
+                    
+                    <div class="col-sm-12 text-center">
+                        <button type="button" class="btn btn-dark" onclick="GetValues();">Compare</button>
+                    </div>
+                </div>
+                <br>
+                
+                <!-- wrapping the whole  numbers thing in a div that only appears after user clicks compare -->
+                
+                <div id = "hidden" class ="hidden">
+
+                    <div style="text-align: center" class="row">
+                        <div class="col-sm-1"></div>                
+                        <div class="col-sm-1"><p>N1</p></div>
+                        <div class="col-sm-1"><p>CA</p></div>
+                        <div class="col-sm-2"><p>Stiletto</p></div>
+                        <div class="col-sm-1"><p>Slash</p></div>
+                        <div class="col-sm-2"><p>Thunderclap Slash</p></div>
+                        <div class="col-sm-2"><p>Burst Damage</p></div>
+                        <div class="col-sm-2"><p>Total Rotation Damage</p></div>
+                    </div>
+                    <div style="text-align: center" class="row">
+                        <div class="col-sm-1"><p>Set One Numbers:</p></div>                
+                        <div class="col-sm-1"><p id = "NA-set1"></p></div>
+                        <div class="col-sm-1"><p id = "CA-set1"></p></div>
+                        <div class="col-sm-2"><p id = "E1-set1"></p></div>
+                        <div class="col-sm-1"><p id = "E2-set1"></p></div>
+                        <div class="col-sm-2"><p id = "E3-set1"></p></div>
+                        <div class="col-sm-2"><p id = "Q-set1"></p></div>
+                        <div class="col-sm-2"><p id = "Total-set1"></p></div>
+                    </div>
+                    <div style="text-align: center" class="row">
+                        <div class="col-sm-1"><p>Set Two Numbers:</p></div>                
+                        <div class="col-sm-1"><p id = "NA-set2"></p></div>
+                        <div class="col-sm-1"><p id = "CA-set2"></p></div>
+                        <div class="col-sm-2"><p id = "E1-set2"></p></div>
+                        <div class="col-sm-1"><p id = "E2-set2"></p></div>
+                        <div class="col-sm-2"><p id = "E3-set2"></p></div>
+                        <div class="col-sm-2"><p id = "Q-set2"></p></div>
+                        <div class="col-sm-2"><p id = "Total-set2"></p></div>
+                    </div>
+                </div>
+                <div class = "row justify-content-center">
+                    <div class = "col-sm-4">
+                        <div class = "difference" id = "difference"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id = "advanced-view">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <img style = "width: 106px; height: 106px;" src ="Keqing.png">
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-8"  style = "text-align: center;">
+                        <h2>Keqing Gear Comparision Calculator</h2>
+                        <p>By 3b00d_09#2235</p>
+                    </div>
+                </div>
+
+                <div>
+                    <button class = "view-button" onclick = "basicView()"> Basic View </button>
+                    <button class = "view-button"onclick = "advancedView()"> Advanced View </button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
