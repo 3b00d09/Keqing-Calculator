@@ -1,5 +1,6 @@
 function MistsplitterStacks(select_id, p1){
 
+// empty the parent from previous stack toggles
 p1.textContent = ""
 
 let stacks = 3

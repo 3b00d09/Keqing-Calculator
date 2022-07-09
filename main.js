@@ -37,10 +37,13 @@ const Weapons = {
             {Type: "ElectroDmg", Value: [0.12]}, 
             {Type: "ElectroDmg", Value: [0, 0.08, 0.16, 0.28]}
         ],
+        // stacks function for set 1
         stacks1(){
             let p1 = document.getElementById("set-one-info2");
             MistsplitterStacks("mistsplitter-stacks1", p1)
         },
+
+        // stacks function for set 2
         stacks2(){
             let p1 = document.getElementById("set-two-info2")
             MistsplitterStacks("mistsplitter-stacks2", p1)
@@ -212,30 +215,9 @@ window.onload = function(){
         }
     });
 
-}
-
-function generate_stacks(select_id,stacks,p1,p2){
-
-    let select = document.createElement("select");
-    select.id = select_id;
-    
-    for (let i = 0; i < stacks; i++){
-    let y = document.createElement("option");
-    y.value = i;
-    y.text = "%s Stacks".replace("%s", i);
-    select.appendChild(y);
-    }
-
-    if (select_id == "summit-stacks"){
-        let linebreak = document.createElement("br");
-        p2.appendChild(linebreak);
-        p2.appendChild(select);
-        document.getElementById("refine_row").style.marginTop = "1rem";
-    }
-    
-    else{
-        p2.appendChild(select);
-    }
+    document.getElementById("calc-button").addEventListener("click", () =>{
+        GetValues()
+    });
 }
 
 function GetValues(){
