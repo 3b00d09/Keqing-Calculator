@@ -37,8 +37,13 @@ const Weapons = {
             {Type: "ElectroDmg", Value: [0.12]}, 
             {Type: "ElectroDmg", Value: [0, 0.08, 0.16, 0.28]}
         ],
-        stacks(){
-            MistsplitterStacks()
+        stacks1(){
+            let p1 = document.getElementById("set-one-info2");
+            MistsplitterStacks("mistsplitter-stacks1", p1)
+        },
+        stacks2(){
+            let p1 = document.getElementById("set-two-info2")
+            MistsplitterStacks("mistsplitter-stacks2", p1)
         }
     },
 
@@ -177,7 +182,18 @@ window.onload = function(){
 
         if (weapon in Weapons){
             weapon = Weapons[`${weapon}`]
-            weapon.stacks() 
+            weapon.stacks1() 
+        }
+
+    });
+
+    document.getElementById("weapon2").addEventListener("change", (e) =>{
+
+        weapon = e.currentTarget.value;
+
+        if (weapon in Weapons){
+            weapon = Weapons[`${weapon}`]
+            weapon.stacks2() 
         }
 
     });
