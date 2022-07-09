@@ -173,8 +173,6 @@ window.onload = function(){
     
     document.getElementById("weapon").addEventListener("change", (e) =>{
 
-        let parent1 = document.getElementById("set-one-info1");
-        let parent2 = document.getElementById("set-one-info2");
         weapon = e.currentTarget.value;
 
         if (weapon in Weapons){
