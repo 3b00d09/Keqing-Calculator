@@ -1,4 +1,4 @@
-function SummitShaperStacks(selectID, parent1, parent2){
+function SummitShaperStacks(selectID, checkID, parent1, parent2){
 
     // empty the parent from previous stack toggles
     parent1.textContent = ""
@@ -25,7 +25,7 @@ function SummitShaperStacks(selectID, parent1, parent2){
     let check = document.createElement("input");
     check.type = "checkbox";
     check.name = "shielded";
-    check.id = "summit-shield-check-set1";
+    check.id = checkID;
     check.className = "weapon-toggle"
     check.checked = true
     parent1.appendChild(check)

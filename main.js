@@ -15,7 +15,7 @@ const Burst_Talent = [4.688, 5.0396, 5.3912, 5.86, 6.2116, 6.5632, 7.032, 7.5008
 
 // need to find a way to reset stats every time a user calcs, wep buffs are being carried over (or are they? idk)
 const CharacterStats = {
-    Atk: 0,
+    ATK: 0,
     CritRate: 0,
     CritDmg: 0,
     ElectroDmg: 0,
@@ -31,133 +31,109 @@ const CharacterStats = {
     BurstTalent: 1,
 }
 
+
+// bunch of variables for weapon or artifact stuff
+
 let weaponToggle = false;
 let artifactToggle = false;
+let weaponStacks1 = 3;
+let refinement = 1;
+let baseATK = 0;
+
+// divs to throw weapon toggles / stacks in
+
+let setOneParent1 = document.getElementById("set-one-info1");
+let setOneParent2 = document.getElementById("set-one-info2");
+
+let setTwoParent1 = document.getElementById("set-two-info1");
+let setTwoParent2 = document.getElementById("set-two-info2");
+
 
 const Weapons = {
     Mistsplitter:{
-        secondStatType: "CritDmg",
-        secondStatValue: 0.441,
-        buffs: [ 
-            {Type: "ElectroDmg", Value: [0.12]}, 
-            {Type: "ElectroDmg", Value: [0, 0.08, 0.16, 0.28]}
+        buffs: [
+            {Type: "ElectroDmg", Value: 0.12 + (0.03 * refinement)},
+            {Type: "ElectroDmg", Value: weaponStacks1 === 3? (0.28 + (refinement * 0.07)) : 
+            (weaponStacks1 * (0.08) + refinement * 0.02)}
         ],
-        // stacks function for set 1
         stacks1(){
-            let p1 = document.getElementById("set-one-info1");
-            let p2 = document.getElementById("set-one-info2");
-            MistsplitterStacks("mistsplitter-stacks1", p1, p2)
+            MistsplitterStacks("set-one-weapon-stacks", setOneParent1, setOneParent2)
         },
-
-        // stacks function for set 2
         stacks2(){
-            let p1 = document.getElementById("set-two-info1");
-            let p2 = document.getElementById("set-two-info2");
-            MistsplitterStacks("mistsplitter-stacks2", p1, p2)
+            MistsplitterStacks("set-two-weapon-stacks", setTwoParent1, setTwoParent2)
         }
     },
 
     SummitShaper:{
         buffs: [
-            {Type: "ATK%", Value: weaponToggle ? [0, 0.08, 0.16, 0.24, 0.32, 0.4] : [0, 0.04, 0.08, 0.12, 0.16, 0.20]}, 
+            {Type: "ATK", Value: weaponToggle ? baseATK * (weaponStacks1 * 2 * (0.04 + (refinement * 0.01))) 
+            : baseATK * (weaponStacks1 * (0.04 + (refinement * 0.01)))}, 
         ],
         stacks1(){
-            let p1 = document.getElementById("set-one-info1");
-            let p2 = document.getElementById("set-one-info2");
-            SummitShaperStacks("summitshaper-stacks1", p1, p2)
+            SummitShaperStacks("set-one-weapon-stacks", "set-one-weapon-toggle", setOneParent1, setOneParent2)
         },
         stacks2(){
-            let p1 = document.getElementById("set-two-info1");
-            let p2 = document.getElementById("set-two-info2");
-            SummitShaperStacks("summitshaper-stacks2", p1, p2)
+            SummitShaperStacks("set-two-weapon-stacks", "set-two-weapon-toggle" ,setTwoParent1, setTwoParent2)
         }
     },
 
     LionsRoar:{
         buffs: [
-            {Type: "AllDMG", Value: [weaponToggle ? 0.4 : 0]}, 
+            {Type: "AllDMG", Value: weaponToggle ? 0.02 + (refinement * 0.04) : 0}, 
         ],
         stacks1(){
-            let p1 = document.getElementById("set-one-info1");
-            let p2 = document.getElementById("set-one-info2");
-            LionsRoarToggle("LR-toggle-set1", p1, p2)
+            LionsRoarToggle("set-one-weapon-toggle", setOneParent1, setOneParent2)
         },
         stacks2(){
-            let p1 = document.getElementById("set-two-info1");
-            let p2 = document.getElementById("set-two-info2");
-            LionsRoarToggle("LR-toggle-set2", p1, p2)
+            LionsRoarToggle("set-two-weapon-toggle", setTwoParent1, setTwoParent2)
         }
     },
 
     BlackSword:{
-        secondStatType: "CritRate",
-        secondStatValue: 0.276,
         buffs: [ 
-            {Type: "NABonus", Value: [0.2]}, 
-            {Type: "CABonus", Value: [0.2]}
+            {Type: "NABonus", Value: 0.2 + (0.05 * refinement)}, 
+            {Type: "CABonus", Value: 0.2 + (0.05 * refinement)}
         ],
         stacks1(){
-            let p1 = document.getElementById("set-one-info1");
-            let p2 = document.getElementById("set-one-info2");
-            Blacksword(p1, p2)
+            Blacksword(setOneParent1, setOneParent2)
         },
         stacks2(){
-            let p1 = document.getElementById("set-two-info1");
-            let p2 = document.getElementById("set-two-info2");
-            Blacksword(p1, p2)
+            Blacksword(setOneParent1, setOneParent2)
         }
     },
 
     Aquila:{
         stacks1(){
-            let p1 = document.getElementById("set-one-info1");
-            let p2 = document.getElementById("set-one-info2");
-            Aquila(p1, p2)
+            Aquila(setOneParent1, setOneParent2)
         },
         stacks2(){
-            let p1 = document.getElementById("set-two-info1");
-            let p2 = document.getElementById("set-two-info2");
-            Aquila(p1, p2)
+            Aquila(setTwoParent1, setTwoParent2)
         }
     },
     
     BlackcliffLongsword:{
-        secondStatType: "CritDmg",
-        secondStatValue: 0.368,
         buffs: [
-            {Type: "ATK%", Value: [0, 0.12, 0.24, 0.36]}, 
+            {Type: "ATK", Value: baseATK * weaponStacks1 * 0.12 + (refinement * 0.03)}, 
         ],
-            stacks1(){
-            let p1 = document.getElementById("set-one-info1");
-            let p2 = document.getElementById("set-one-info2");
-            BlackcliffStacks("blackcliff-stacks1", p1, p2)
+        stacks1(){
+            BlackcliffStacks("set-one-weapon-stacks", setOneParent1, setOneParent2)
         },
-
-        // stacks function for set 2
         stacks2(){
-            let p1 = document.getElementById("set-two-info1");
-            let p2 = document.getElementById("set-two-info2");
-            BlackcliffStacks("blackcliff-stacks2", p1, p2)
+            BlackcliffStacks("set-two-weapon-stacks", setTwoParent1, setTwoParent2)
         }
     },
 
     PrototypeRancour:{
-        secondStatType: "PhysDmg",
-        secondStatValue: 0.345,
         buffs:[
-            {Type:"ATK%", Value:[0, 0.04, 0.08, 0.12, 0.16]}
+            {Type:"ATK%", Value: baseATK * weaponStacks1 * 0.4 + (refinement * 0.01)}
         ],
         stacks1(){
-            let p1 = document.getElementById("set-one-info1");
-            let p2 = document.getElementById("set-one-info2");
-            RancourStacks("rancour-stacks1", p1, p2)
+            RancourStacks("set-one-weapon-stacks", setOneParent1, setOneParent2)
         },
 
         // stacks function for set 2
         stacks2(){
-            let p1 = document.getElementById("set-two-info1");
-            let p2 = document.getElementById("set-two-info2");
-            RancourStacks("rancour-stacks2", p1, p2)
+            RancourStacks("set-two-weapon-stacks", setTwoParent1, setTwoParent2)
         }
     }
 }
@@ -215,16 +191,6 @@ const Artifacts = {
     // }
 }
 
-let damage = [];
-let pos = 0;
-let weapon;
-let artifact2p;
-let artifact4p;
-
-
-let Rotation1, Rotation2;
-let Aquila1 = 0, Aquila2 = 0;
-
 
 window.onload = function(){
 
@@ -251,69 +217,71 @@ window.onload = function(){
             select.appendChild(y);
         }
     }
-
-    
-    document.getElementById("weapon").addEventListener("change", (e) =>{
-
-        weapon = e.currentTarget.value;
-
-        if (weapon in Weapons){
-            weapon = Weapons[`${weapon}`]
-            document.getElementById("refine-set1").style.display = "flex";
-            weapon.stacks1() 
-        }
-        else{
-            document.getElementById("refine-set1").style.display = "none";
-            document.getElementById("set-one-info1").textContent = "";
-            document.getElementById("set-one-info2").textContent = "";
-        }
-
-    });
-
-    document.getElementById("weapon2").addEventListener("change", (e) =>{
-
-        weapon = e.currentTarget.value;
-
-        if (weapon in Weapons){
-            weapon = Weapons[`${weapon}`]
-            document.getElementById("refine-set2").style.display = "flex";
-            weapon.stacks2() 
-        }
-        else{
-            document.getElementById("refine-set2").style.display  = "none";
-            document.getElementById("set-two-info1").textContent = "";
-            document.getElementById("set-two-info2").textContent = "";
-
-        }
-
-    });
-
-    document.getElementById("artifacts-2piece-set1").addEventListener("change", (e) =>{
-        artifact2p = e.currentTarget.value
-        if (artifact2p in Artifacts){
-            artifact2p = Artifacts[`${artifact2p}`]
-        }
-    });
-
-    document.getElementById("artifacts-4piece-set1").addEventListener("change", (e) =>{
-        artifact4p = e.currentTarget.value
-        if (artifact4p in Artifacts){
-            artifact4p = Artifacts[`${artifact4p}`]
-        }
-    });
-
-    document.getElementById("calc-button").addEventListener("click", () =>{
-        GetValues1()
-    });
 }
+ 
+let weapon;
+let artifact2p;
+let artifact4p;
+
+document.getElementById("weapon").addEventListener("change", (e) =>{
+
+    weapon = e.currentTarget.value;
+
+    if (weapon in Weapons){
+        weapon = Weapons[`${weapon}`]
+        document.getElementById("refine-set1").style.display = "flex";
+        weapon.stacks1() 
+    }
+    else{
+        document.getElementById("refine-set1").style.display = "none";
+        document.getElementById("set-one-info1").textContent = "";
+        document.getElementById("set-one-info2").textContent = "";
+    }
+
+});
+
+document.getElementById("weapon2").addEventListener("change", (e) =>{
+
+    weapon = e.currentTarget.value;
+
+    if (weapon in Weapons){
+        weapon = Weapons[`${weapon}`]
+        document.getElementById("refine-set2").style.display = "flex";
+        weapon.stacks2() 
+    }
+    else{
+        document.getElementById("refine-set2").style.display  = "none";
+        document.getElementById("set-two-info1").textContent = "";
+        document.getElementById("set-two-info2").textContent = "";
+
+    }
+
+});
+
+document.getElementById("artifacts-2piece-set1").addEventListener("change", (e) =>{
+    artifact2p = e.currentTarget.value
+    if (artifact2p in Artifacts){
+        artifact2p = Artifacts[`${artifact2p}`]
+    }
+});
+
+document.getElementById("artifacts-4piece-set1").addEventListener("change", (e) =>{
+    artifact4p = e.currentTarget.value
+    if (artifact4p in Artifacts){
+        artifact4p = Artifacts[`${artifact4p}`]
+    }
+});
+
+document.getElementById("calc-button").addEventListener("click", () =>{
+    GetValues1()
+});
+
 
 
 function GetValues1(){
 
-    let refinement;
-
     // get character stats
-    CharacterStats.Atk = parseFloat(document.getElementById("atk").value);
+    CharacterStats.ATK = parseFloat(document.getElementById("atk").value);
     CharacterStats.CritRate = parseFloat(document.getElementById("cr").value) / 100;
     CharacterStats.CritDmg = parseFloat(document.getElementById("cd").value) / 100;
     let GobletType = document.getElementById("goblet").value;
@@ -334,18 +302,16 @@ function GetValues1(){
 
     //cv = 1 + (cr * cd);
 
-    let stacks = 0;
-
     // add weapon buffs
     try{
         weapon.buffs.forEach((buff) =>{
-            CharacterStats[`${buff.Type}`] += buff.Value[stacks]
+            CharacterStats[`${buff.Type}`] += buff.Value
         })
     }
     catch(err){
         console.log("No weapon")
     }
-    
+
 
     
     // add 2-piece artifact buff
@@ -417,5 +383,3 @@ function advancedView(){
     document.querySelector("#basic-view").style.display = "none";
     document.querySelector("#advanced-view").style.display = "block";
 }
-
-
