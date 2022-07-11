@@ -1,5 +1,6 @@
 label{
     color:white;
+    margin: 0;
 }
 
 .calcbody{
@@ -67,4 +68,20 @@ transform: translateY(2px);
 
 #advanced-view{
     display: none;
+}
+
+#refine-set1{
+    display:none;
+}
+
+#refine-set2{
+    display:none;
+}
+
+.weapon-toggle{
+    transform: scale(1.5);
+}
+
+.row{
+    margin: 6px 0px;
 }

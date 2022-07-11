@@ -1,12 +1,13 @@
-function MistsplitterStacks(select_id, p1){
+function MistsplitterStacks(selectID, parent1, parent2){
 
 // empty the parent from previous stack toggles
-p1.textContent = ""
+parent1.textContent = ""
+parent2.textContent = ""
 
 let stacks = 3
 
 let select = document.createElement("select");
-select.id = select_id;
+select.id = selectID;
 
 for (let i = 0; i <= stacks; i++){
 let y = document.createElement("option");
@@ -15,7 +16,7 @@ y.text = "%s Stacks".replace("%s", i);
 select.appendChild(y);
 }
 
-p1.appendChild(select);
+parent2.appendChild(select);
 }
 
 export {MistsplitterStacks}

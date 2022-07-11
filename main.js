@@ -1,6 +1,11 @@
-import { MistsplitterStacks } from "./mistsplitter.js";
+import { MistsplitterStacks } from "./Weapons/mistsplitter.js";
+import { SummitShaperStacks } from "./Weapons/summitshaper.js";
+import { LionsRoarToggle } from "./Weapons/lionsroar.js";
+import { Blacksword } from "./Weapons/blacksword.js";
+import { Aquila } from "./Weapons/aquila.js";
+import { BlackcliffStacks } from "./Weapons/blackcliff.js";
+import { RancourStacks } from "./Weapons/rancour.js";
 
-// add support for talents 8 through 10 eventually, maybe 10 to 13? 
 
 const N1_Talent = [0.4102, 0.4436, 0.477, 0.5247, 0.5581, 0.5962, 0.6487, 0.7012, 0.7537, 0.8109, 0.8681, 0.9254, 0.9826];
 const CA_Talent = [1.628, 1.7605, 1.893, 2.0823, 2.2148, 2.3663, 2.5745, 2.7827, 2.9909, 3.2181, 3.4453, 3.6724, 3.8996 ];
@@ -39,27 +44,49 @@ const Weapons = {
         ],
         // stacks function for set 1
         stacks1(){
-            let p1 = document.getElementById("set-one-info2");
-            MistsplitterStacks("mistsplitter-stacks1", p1)
+            let p1 = document.getElementById("set-one-info1");
+            let p2 = document.getElementById("set-one-info2");
+            MistsplitterStacks("mistsplitter-stacks1", p1, p2)
         },
 
         // stacks function for set 2
         stacks2(){
-            let p1 = document.getElementById("set-two-info2")
-            MistsplitterStacks("mistsplitter-stacks2", p1)
+            let p1 = document.getElementById("set-two-info1");
+            let p2 = document.getElementById("set-two-info2");
+            MistsplitterStacks("mistsplitter-stacks2", p1, p2)
         }
     },
 
     SummitShaper:{
         buffs: [
             {Type: "ATK%", Value: weaponToggle ? [0, 0.08, 0.16, 0.24, 0.32, 0.4] : [0, 0.04, 0.08, 0.12, 0.16, 0.20]}, 
-        ]
+        ],
+        stacks1(){
+            let p1 = document.getElementById("set-one-info1");
+            let p2 = document.getElementById("set-one-info2");
+            SummitShaperStacks("summitshaper-stacks1", p1, p2)
+        },
+        stacks2(){
+            let p1 = document.getElementById("set-two-info1");
+            let p2 = document.getElementById("set-two-info2");
+            SummitShaperStacks("summitshaper-stacks2", p1, p2)
+        }
     },
 
     LionsRoar:{
         buffs: [
             {Type: "AllDMG", Value: [weaponToggle ? 0.4 : 0]}, 
-        ]
+        ],
+        stacks1(){
+            let p1 = document.getElementById("set-one-info1");
+            let p2 = document.getElementById("set-one-info2");
+            LionsRoarToggle("LR-toggle-set1", p1, p2)
+        },
+        stacks2(){
+            let p1 = document.getElementById("set-two-info1");
+            let p2 = document.getElementById("set-two-info2");
+            LionsRoarToggle("LR-toggle-set2", p1, p2)
+        }
     },
 
     BlackSword:{
@@ -68,7 +95,30 @@ const Weapons = {
         buffs: [ 
             {Type: "NABonus", Value: [0.2]}, 
             {Type: "CABonus", Value: [0.2]}
-        ] 
+        ],
+        stacks1(){
+            let p1 = document.getElementById("set-one-info1");
+            let p2 = document.getElementById("set-one-info2");
+            Blacksword(p1, p2)
+        },
+        stacks2(){
+            let p1 = document.getElementById("set-two-info1");
+            let p2 = document.getElementById("set-two-info2");
+            Blacksword(p1, p2)
+        }
+    },
+
+    Aquila:{
+        stacks1(){
+            let p1 = document.getElementById("set-one-info1");
+            let p2 = document.getElementById("set-one-info2");
+            Aquila(p1, p2)
+        },
+        stacks2(){
+            let p1 = document.getElementById("set-two-info1");
+            let p2 = document.getElementById("set-two-info2");
+            Aquila(p1, p2)
+        }
     },
     
     BlackcliffLongsword:{
@@ -76,7 +126,19 @@ const Weapons = {
         secondStatValue: 0.368,
         buffs: [
             {Type: "ATK%", Value: [0, 0.12, 0.24, 0.36]}, 
-        ]
+        ],
+            stacks1(){
+            let p1 = document.getElementById("set-one-info1");
+            let p2 = document.getElementById("set-one-info2");
+            BlackcliffStacks("blackcliff-stacks1", p1, p2)
+        },
+
+        // stacks function for set 2
+        stacks2(){
+            let p1 = document.getElementById("set-two-info1");
+            let p2 = document.getElementById("set-two-info2");
+            BlackcliffStacks("blackcliff-stacks2", p1, p2)
+        }
     },
 
     PrototypeRancour:{
@@ -84,7 +146,19 @@ const Weapons = {
         secondStatValue: 0.345,
         buffs:[
             {Type:"ATK%", Value:[0, 0.04, 0.08, 0.12, 0.16]}
-        ]
+        ],
+        stacks1(){
+            let p1 = document.getElementById("set-one-info1");
+            let p2 = document.getElementById("set-one-info2");
+            RancourStacks("rancour-stacks1", p1, p2)
+        },
+
+        // stacks function for set 2
+        stacks2(){
+            let p1 = document.getElementById("set-two-info1");
+            let p2 = document.getElementById("set-two-info2");
+            RancourStacks("rancour-stacks2", p1, p2)
+        }
     }
 }
 
@@ -185,7 +259,13 @@ window.onload = function(){
 
         if (weapon in Weapons){
             weapon = Weapons[`${weapon}`]
+            document.getElementById("refine-set1").style.display = "flex";
             weapon.stacks1() 
+        }
+        else{
+            document.getElementById("refine-set1").style.display = "none";
+            document.getElementById("set-one-info1").textContent = "";
+            document.getElementById("set-one-info2").textContent = "";
         }
 
     });
@@ -196,7 +276,14 @@ window.onload = function(){
 
         if (weapon in Weapons){
             weapon = Weapons[`${weapon}`]
+            document.getElementById("refine-set2").style.display = "flex";
             weapon.stacks2() 
+        }
+        else{
+            document.getElementById("refine-set2").style.display  = "none";
+            document.getElementById("set-two-info1").textContent = "";
+            document.getElementById("set-two-info2").textContent = "";
+
         }
 
     });
@@ -216,14 +303,10 @@ window.onload = function(){
     });
 
     document.getElementById("calc-button").addEventListener("click", () =>{
-        GetValues()
+        GetValues1()
     });
 }
 
-function GetValues(){
-    GetValues1();
-    
-}
 
 function GetValues1(){
 
