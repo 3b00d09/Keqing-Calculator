@@ -1,4 +1,4 @@
-function BlackcliffStacks(selectID, parent1, parent2){
+export function BlackcliffStacks(selectID, parent1, parent2){
 
     // empty the parent from previous stack toggles
     parent1.textContent = ""
@@ -19,6 +19,25 @@ function BlackcliffStacks(selectID, parent1, parent2){
     parent2.appendChild(select);
 }
     
-export {BlackcliffStacks}
     
-    
+export function BlackcliffBuffSetOne(){
+    let weaponStacks = document.getElementById("set-one-weapon-stacks").value;
+    let refinement = document.getElementById("weapon-refines").value;
+    let baseAttack = parseInt(document.getElementById("baseatk").value)
+
+    let buffs = [
+        {Type: "ATK", Value: baseAttack * (weaponStacks *(0.12 + refinement * 0.03))}, 
+    ]
+    return buffs
+}
+
+export function BlackcliffBuffSetTwo(){
+    let weaponStacks = document.getElementById("set-two-weapon-stacks").value;
+    let refinement = document.getElementById("weapon-refines").value;
+    let baseAttack = parseInt(document.getElementById("baseatk2").value)
+
+    let buffs = [
+        {Type: "ATK", Value: baseAttack * (weaponStacks *(0.12 + refinement * 0.03))}, 
+    ]
+    return buffs
+}

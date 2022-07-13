@@ -1,10 +1,10 @@
-import { MistsplitterStacks } from "./Weapons/mistsplitter.js";
-import { SummitShaperStacks } from "./Weapons/summitshaper.js";
-import { LionsRoarToggle } from "./Weapons/lionsroar.js";
-import { Blacksword } from "./Weapons/blacksword.js";
+import { MistsplitterBuffsSetOne, MistsplitterBuffsSetTwo, MistsplitterDisplay } from "./Weapons/mistsplitter.js";
+import { SummitShaperStacks, SummitBuffsSetOne, SummitBuffsSetTwo } from "./Weapons/summitshaper.js";
+import { LionsRoarToggle, LionsRoarBuffSetOne, LionsRoarBuffSetTwo } from "./Weapons/lionsroar.js";
+import { Blacksword, BlackswordBuffSetOne, BlackswordBuffSetTwo } from "./Weapons/blacksword.js";
 import { Aquila } from "./Weapons/aquila.js";
-import { BlackcliffStacks } from "./Weapons/blackcliff.js";
-import { RancourStacks } from "./Weapons/rancour.js";
+import { BlackcliffStacks, BlackcliffBuffSetOne, BlackcliffBuffSetTwo } from "./Weapons/blackcliff.js";
+import { RancourStacks, RancourBuffSetOne, RancourBuffSetTwo } from "./Weapons/rancour.js";
 
 
 const N1_Talent = [0.4102, 0.4436, 0.477, 0.5247, 0.5581, 0.5962, 0.6487, 0.7012, 0.7537, 0.8109, 0.8681, 0.9254, 0.9826];
@@ -13,30 +13,37 @@ const Stiletto_Talent = [0.504, 0.5418, 0.5796, 0.63, 0.6678, 0.7056, 0.756, 0.8
 const Recast_Talent = [1.68, 1.806, 1.932, 2.1, 2.226, 2.352, 2.52, 2.688, 2.856, 3.024, 3.192, 3.36, 3.57];
 const Burst_Talent = [4.688, 5.0396, 5.3912, 5.86, 6.2116, 6.5632, 7.032, 7.5008, 7.9696, 8.4384, 8.9072, 9.406, 9.962];
 
-// need to find a way to reset stats every time a user calcs, wep buffs are being carried over (or are they? idk)
-const CharacterStats = {
-    ATK: 0,
-    CritRate: 0,
-    CritDmg: 0,
-    ElectroDmg: 0,
-    PhysDmg: 0,
-    NABonus: 0,
-    CABonus: 0,
-    SkillBonus: 0,
-    BurstBonus: 0,
-    NATalent: 1,
-    CATalent: 1,
-    SkillTalentCast: 1,
-    SkillTalentRecast: 1,
-    BurstTalent: 1,
+// reset stats every time calc is called to prevent buffs from getting carried over from prev calcs (ex: lion's roar)
+
+function ResetStats(){
+    const CharacterStats = {
+        ATK: 0,
+        CritRate: 0,
+        CritDmg: 0,
+        ElectroDmg: 0,
+        PhysDmg: 0,
+        NABonus: 0,
+        CABonus: 0,
+        SkillBonus: 0,
+        BurstBonus: 0,
+        AllDMG: 0,
+        NATalent: 1,
+        CATalent: 1,
+        SkillTalentCast: 1,
+        SkillTalentRecast: 1,
+        BurstTalent: 1,
+    }
+
+    return CharacterStats;
 }
+
 
 
 // bunch of variables for weapon or artifact stuff
 
 let weaponToggle = false;
 let artifactToggle = false;
-let weaponStacks1 = 3;
+let weaponStacks1 = 0;
 let refinement = 1;
 let baseATK = 0;
 
@@ -51,89 +58,117 @@ let setTwoParent2 = document.getElementById("set-two-info2");
 
 const Weapons = {
     Mistsplitter:{
-        buffs: [
-            {Type: "ElectroDmg", Value: 0.12 + (0.03 * refinement)},
-            {Type: "ElectroDmg", Value: weaponStacks1 === 3? (0.28 + (refinement * 0.07)) : 
-            (weaponStacks1 * (0.08) + refinement * 0.02)}
-        ],
-        stacks1(){
-            MistsplitterStacks("set-one-weapon-stacks", setOneParent1, setOneParent2)
+        selectType: "Stacks",
+        buffType: "ElectroDmg",
+        DisplaySetOne(){
+            MistsplitterDisplay("set-one-weapon-stacks", setOneParent1, setOneParent2)
         },
-        stacks2(){
-            MistsplitterStacks("set-two-weapon-stacks", setTwoParent1, setTwoParent2)
+        DisplaySetTwo(){
+            MistsplitterDisplay("set-two-weapon-stacks", setTwoParent1, setTwoParent2)
+        },
+        buffsSetOne(){
+            let buffs = MistsplitterBuffsSetOne()
+            return buffs
+        },
+        buffsSetTwo(){
+            let buffs = MistsplitterBuffsSetTwo()
+            return buffs
         }
     },
 
     SummitShaper:{
-        buffs: [
-            {Type: "ATK", Value: weaponToggle ? baseATK * (weaponStacks1 * 2 * (0.04 + (refinement * 0.01))) 
-            : baseATK * (weaponStacks1 * (0.04 + (refinement * 0.01)))}, 
-        ],
-        stacks1(){
+        DisplaySetOne(){
             SummitShaperStacks("set-one-weapon-stacks", "set-one-weapon-toggle", setOneParent1, setOneParent2)
         },
-        stacks2(){
+        DisplaySetTwo(){
             SummitShaperStacks("set-two-weapon-stacks", "set-two-weapon-toggle" ,setTwoParent1, setTwoParent2)
+        },
+        buffsSetOne(){
+            let buffs = SummitBuffsSetOne()
+            return buffs
+        },
+        buffsSetTwo(){
+            let buffs = SummitBuffsSetTwo()
+            return buffs
         }
     },
 
     LionsRoar:{
-        buffs: [
-            {Type: "AllDMG", Value: weaponToggle ? 0.02 + (refinement * 0.04) : 0}, 
-        ],
-        stacks1(){
+        selectType: "Toggle",
+        DisplaySetOne(){
             LionsRoarToggle("set-one-weapon-toggle", setOneParent1, setOneParent2)
         },
-        stacks2(){
+        DisplaySetTwo(){
             LionsRoarToggle("set-two-weapon-toggle", setTwoParent1, setTwoParent2)
+        },
+        buffsSetOne(){
+            let buffs = LionsRoarBuffSetOne()
+            return buffs
+        },
+        buffsSetTwo(){
+            let buffs = LionsRoarBuffSetTwo()
+            return buffs
         }
     },
 
     BlackSword:{
-        buffs: [ 
-            {Type: "NABonus", Value: 0.2 + (0.05 * refinement)}, 
-            {Type: "CABonus", Value: 0.2 + (0.05 * refinement)}
-        ],
-        stacks1(){
+        DisplaySetOne(){
             Blacksword(setOneParent1, setOneParent2)
         },
-        stacks2(){
-            Blacksword(setOneParent1, setOneParent2)
+        DisplaySetTwo(){
+            Blacksword(setTwoParent1, setTwoParent2)
+        },
+        buffsSetOne(){
+            let buffs = BlackswordBuffSetOne()
+            return buffs
+        },
+        buffsSetTwo(){
+            let buffs = BlackswordBuffSetTwo()
+            return buffs
         }
     },
 
     Aquila:{
-        stacks1(){
+        DisplaySetOne(){
             Aquila(setOneParent1, setOneParent2)
         },
-        stacks2(){
+        DisplaySetTwo(){
             Aquila(setTwoParent1, setTwoParent2)
         }
     },
     
     BlackcliffLongsword:{
-        buffs: [
-            {Type: "ATK", Value: baseATK * weaponStacks1 * 0.12 + (refinement * 0.03)}, 
-        ],
-        stacks1(){
+        DisplaySetOne(){
             BlackcliffStacks("set-one-weapon-stacks", setOneParent1, setOneParent2)
         },
-        stacks2(){
+        DisplaySetTwo(){
             BlackcliffStacks("set-two-weapon-stacks", setTwoParent1, setTwoParent2)
+        },
+        buffsSetOne(){
+            let buffs = BlackcliffBuffSetOne()
+            return buffs
+        },
+        buffsSetTwo(){
+            let buffs = BlackcliffBuffSetTwo()
+            return buffs
         }
+
     },
 
     PrototypeRancour:{
-        buffs:[
-            {Type:"ATK%", Value: baseATK * weaponStacks1 * 0.4 + (refinement * 0.01)}
-        ],
-        stacks1(){
+        DisplaySetOne(){
             RancourStacks("set-one-weapon-stacks", setOneParent1, setOneParent2)
         },
-
-        // stacks function for set 2
-        stacks2(){
+        DisplaySetTwo(){
             RancourStacks("set-two-weapon-stacks", setTwoParent1, setTwoParent2)
+        },
+        buffsSetOne(){
+            let buffs = RancourBuffSetOne()
+            return buffs
+        },
+        buffsSetTwo(){
+            let buffs = RancourBuffSetTwo()
+            return buffs
         }
     }
 }
@@ -230,7 +265,7 @@ document.getElementById("weapon").addEventListener("change", (e) =>{
     if (weapon in Weapons){
         weapon = Weapons[`${weapon}`]
         document.getElementById("refine-set1").style.display = "flex";
-        weapon.stacks1() 
+        weapon.DisplaySetOne() 
     }
     else{
         document.getElementById("refine-set1").style.display = "none";
@@ -247,7 +282,7 @@ document.getElementById("weapon2").addEventListener("change", (e) =>{
     if (weapon in Weapons){
         weapon = Weapons[`${weapon}`]
         document.getElementById("refine-set2").style.display = "flex";
-        weapon.stacks2() 
+        weapon.DisplaySetTwo() 
     }
     else{
         document.getElementById("refine-set2").style.display  = "none";
@@ -280,6 +315,8 @@ document.getElementById("calc-button").addEventListener("click", () =>{
 
 function GetValues1(){
 
+    let CharacterStats = ResetStats();
+
     // get character stats
     CharacterStats.ATK = parseFloat(document.getElementById("atk").value);
     CharacterStats.CritRate = parseFloat(document.getElementById("cr").value) / 100;
@@ -300,27 +337,20 @@ function GetValues1(){
     let display = document.getElementById("display").value;
 
 
-    //cv = 1 + (cr * cd);
-
     // add weapon buffs
-    try{
-        weapon.buffs.forEach((buff) =>{
+    if (weapon){
+        let weaponBuffs = weapon.buffsSetOne()
+        weaponBuffs.forEach((buff) =>{
             CharacterStats[`${buff.Type}`] += buff.Value
         })
     }
-    catch(err){
-        console.log("No weapon")
-    }
 
-
-    
     // add 2-piece artifact buff
 
     try{
         artifact2p.buffs.forEach((buff) =>{
             CharacterStats[`${buff.Type}`] += buff.Value[0]
         })
-        
     }
 
     catch(err){
@@ -342,29 +372,28 @@ function GetValues1(){
     console.log(CharacterStats)
     
 
-    calc();
+    calc(CharacterStats);
 }
 
 
-function calc (){
-    console.log("DN");
+function calc (CharacterStats){
     let cv = 1 + (CharacterStats.CritDmg * CharacterStats.CritRate)
     let enemyRes = 0.9;
     let enemyDef = 0.5;
     
-    let N1 = (CharacterStats.Atk * CharacterStats.NATalent) * (1 + (CharacterStats.ElectroDmg + CharacterStats.NABonus)) * 
+    let N1 = (CharacterStats.ATK * CharacterStats.NATalent) * (1 + (CharacterStats.ElectroDmg + CharacterStats.NABonus + CharacterStats.AllDMG)) 
+    * cv * enemyRes * enemyDef
+
+    let CA = (CharacterStats.ATK * CharacterStats.CATalent) * (1 + (CharacterStats.ElectroDmg + CharacterStats.CABonus)) * 
     cv * enemyRes * enemyDef
 
-    let CA = (CharacterStats.Atk * CharacterStats.CATalent) * (1 + (CharacterStats.ElectroDmg + CharacterStats.CABonus)) * 
+    let Stilleto = (CharacterStats.ATK * CharacterStats.SkillTalentCast) * (1 + (CharacterStats.ElectroDmg + CharacterStats.SkillBonus)) * 
     cv * enemyRes * enemyDef
 
-    let Stilleto = (CharacterStats.Atk * CharacterStats.SkillTalentCast) * (1 + (CharacterStats.ElectroDmg + CharacterStats.SkillBonus)) * 
+    let SkillRecast = (CharacterStats.ATK * CharacterStats.SkillTalentRecast) * (1 + (CharacterStats.ElectroDmg + CharacterStats.SkillBonus)) * 
     cv * enemyRes * enemyDef
 
-    let SkillRecast = (CharacterStats.Atk * CharacterStats.SkillTalentRecast) * (1 + (CharacterStats.ElectroDmg + CharacterStats.SkillBonus)) * 
-    cv * enemyRes * enemyDef
-
-    let Burst = (CharacterStats.Atk * CharacterStats.BurstTalent) * (1 + (CharacterStats.ElectroDmg + CharacterStats.BurstBonus)) * 
+    let Burst = (CharacterStats.ATK * CharacterStats.BurstTalent) * (1 + (CharacterStats.ElectroDmg + CharacterStats.BurstBonus)) * 
     cv * enemyRes * enemyDef
 
     console.log(N1)

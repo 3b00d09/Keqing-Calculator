@@ -1,4 +1,4 @@
-function SummitShaperStacks(selectID, checkID, parent1, parent2){
+export function SummitShaperStacks(selectID, checkID, parent1, parent2){
 
     // empty the parent from previous stack toggles
     parent1.textContent = ""
@@ -32,4 +32,29 @@ function SummitShaperStacks(selectID, checkID, parent1, parent2){
 }
 
 
-export {SummitShaperStacks}
+export function SummitBuffsSetOne(){
+
+    let weaponStacks = document.getElementById("set-one-weapon-stacks").value;
+    let refinement = document.getElementById("weapon-refines").value;
+    let weaponToggle = document.getElementById("set-one-weapon-toggle").checked;
+    let baseAttack = parseInt(document.getElementById("baseatk").value)
+
+    let buffs = [
+        {Type: "ATK", Value: weaponToggle ? baseAttack * (weaponStacks * 2 * (0.04 + (refinement * 0.01))) 
+        : baseAttack * (weaponStacks * (0.04 + (refinement * 0.01)))}, 
+    ]
+    return buffs
+}
+
+export function SummitBuffsSetTwo(){
+    let weaponStacks = document.getElementById("set-two-weapon-stacks").value;
+    let refinement = document.getElementById("weapon-refines").value;
+    let weaponToggle = document.getElementById("set-two-weapon-toggle").checked;
+    let baseAttack = parseInt(document.getElementById("baseatk2").value)
+
+    let buffs = [
+        {Type: "ATK", Value: weaponToggle ? baseAttack * (weaponStacks * 2 * (0.04 + (refinement * 0.01))) 
+        : baseAttack * (weaponStacks * (0.04 + (refinement * 0.01)))}, 
+    ]
+    return buffs
+}
