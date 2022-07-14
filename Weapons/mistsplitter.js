@@ -36,7 +36,7 @@ export function MistsplitterBuffsSetOne(){
 export function MistsplitterBuffsSetTwo(){
 
     let weaponStacks = document.getElementById("set-two-weapon-stacks").value;
-    let refinement = document.getElementById("weapon-refines").value;
+    let refinement = document.getElementById("weapon-refines2").value;
 
     let buffs = [
         {Type: "ElectroDmg", Value: 0.12 + (0.03 * refinement)},

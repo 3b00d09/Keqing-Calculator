@@ -24,7 +24,7 @@ export function BlackswordBuffSetOne(){
 
 export function BlackswordBuffSetTwo(){
     
-    let refinement = document.getElementById("weapon-refines").value;
+    let refinement = document.getElementById("weapon-refines2").value;
 
     let buffs =  [ 
         {Type: "NABonus", Value: 0.2 + (0.05 * refinement)}, 

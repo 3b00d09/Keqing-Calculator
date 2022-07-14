@@ -48,7 +48,7 @@ export function SummitBuffsSetOne(){
 
 export function SummitBuffsSetTwo(){
     let weaponStacks = document.getElementById("set-two-weapon-stacks").value;
-    let refinement = document.getElementById("weapon-refines").value;
+    let refinement = document.getElementById("weapon-refines2").value;
     let weaponToggle = document.getElementById("set-two-weapon-toggle").checked;
     let baseAttack = parseInt(document.getElementById("baseatk2").value)
 

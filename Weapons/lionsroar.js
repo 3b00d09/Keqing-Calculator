@@ -30,7 +30,7 @@ export function LionsRoarBuffSetOne(){
 
 export function LionsRoarBuffSetTwo(){
 
-    let refinement = document.getElementById("weapon-refines").value;
+    let refinement = document.getElementById("weapon-refines2").value;
     let weaponToggle = document.getElementById("set-two-weapon-toggle").checked;
 
     let buffs =  [
