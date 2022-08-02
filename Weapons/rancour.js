@@ -1,4 +1,15 @@
-export function RancourStacks(selectID, parent1, parent2){
+export function RancourStacks(selectID, set){
+
+    // divs to throw out stuff in 
+
+    let parent1
+    let parent2
+
+    // we get passed the "set" string which tells us the set to throw the stacks dropdown in
+    
+    set === "one" ? (parent1 = document.getElementById("set-one-info1"), parent2 = document.getElementById("set-one-info2")) : 
+    (parent1 = document.getElementById("set-two-info1"), parent2 = document.getElementById("set-two-info2"))
+         
 
     // empty the parent from previous stack toggles
     parent1.textContent = ""

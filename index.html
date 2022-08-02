@@ -12,26 +12,25 @@
 
     <body>
         <div class = "container calcbody">
-            <div id = "basic-view">
+            <div id = "calculator-view">
                 <div class="row">
-                    <div class="col-sm-2">
-                        <img style = "width: 106px; height: 106px;" src ="Keqing.png">
+                    <div class="col-sm-3">
+                        <img src ="Keqing.png">
                     </div>
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-8"  style = "text-align: center;">
+                    <div class="col-sm-9"  style = "text-align: center;">
                         <h2>Keqing Gear Comparision Calculator</h2>
                         <p>By 3b00d_09#2235</p>
                     </div>
                 </div>
 
                 <div>
-                    <button class = "view-button" onclick = "basicView()"> Basic View </button>
-                    <button class = "view-button"onclick = "advancedView()"> Advanced View </button>
+                    <button class = "view-button basic-view-btn"> Calculator </button>
+                    <button class = "view-button advanced-view-btn">About</button>
                 </div>
 
                 <div class="row">
                     <div class="col-sm-6 text-center">
-                        <p class ="set rowsa">Set One</p>     
+                        <p class ="set">Set One</p>     
                         <div class = "row">
                             <div class ="col-sm-6"><label>Character Base Attack</label></div>
                             <div class = "col-sm-6"><input type = "number" id = "baseatk" name = "Character Base ATK"></div>
@@ -74,15 +73,15 @@
                                         <option>2-Piece Shimenawa's Reminiscence</option>
                                         <option>2-Piece Thundersoother</option>
                                         <option value="PaleFlame2p">2-Piece Pale Flame</option>
-                                        <option value="BSC22p">2-Piece Bloodstained Chivalry</option>
+                                        <option value="BSC2p">2-Piece Bloodstained Chivalry</option>
                                         <option value="Noblesse2p">2-Piece Noblesse Oblige</option>
                                         <option value = "other">Other</option>
                                     </select>
                                 </div>
                             </div>
                             <div class = "row">
-                                <div class ="col-sm-6" id = "artifacts-2piece-set1-1"></div>
-                                <div class ="col-sm-6" id = "artifacts-2piece-set1-2"></div>
+                                <div class ="col-sm-6" id = "artifacts-2p-set1-1"></div>
+                                <div class ="col-sm-6" id = "artifacts-2p-set1-2"></div>
                             </div>
                             <div class="row">
                                 <div class = "col-sm-6">                       
@@ -90,7 +89,7 @@
                                 <div class = "col-sm-6">                   
                                     <select id="artifacts-4piece-set1" name ="Artifacts">
                                         <option id = "Select Artifacts">Select Set</option>
-                                        <option value="Thundering Fury2p">2-Piece Thundering Fury</option>
+                                        <option value="ThunderingFury2p">2-Piece Thundering Fury</option>
                                         <option>2-Piece Gladiator's Finale</option>
                                         <option>2-Piece Shimenawa's Reminiscence</option>
                                         <option value="PaleFlame2p">2-Piece Pale Flame</option>
@@ -105,8 +104,8 @@
                                 </div>
                             </div>
                             <div class = "row">
-                                <div class ="col-sm-6" id = "artifacts-4piece-set1-1"></div>
-                                <div class ="col-sm-6" id = "artifacts-4piece-set1-2"></div>
+                                <div class ="col-sm-6" id = "artifacts-4p-set1-1"></div>
+                                <div class ="col-sm-6" id = "artifacts-4p-set1-2"></div>
                             </div>
                             <div class ="row">
                                 <div class = "col-sm-6">
@@ -207,8 +206,8 @@
                                     <label>Goblet / Infusion Type</label></div>
                                 <div class = "col-sm-6">                   
                                     <select id = "goblet2" name = "Damage%">
-                                        <option value = "elec2">Electro</option>
-                                        <option value = "phys2">Physical</option>
+                                        <option value = "elec">Electro</option>
+                                        <option value = "phys">Physical</option>
                                     </select>
                                 </div>
                             </div>
@@ -222,16 +221,16 @@
                                         <option>2-Piece Gladiator's Finale</option>
                                         <option>2-Piece Shimenawa's Reminiscence</option>
                                         <option>2-Piece Thundersoother</option>
-                                        <option value="Pale Flame">2-Piece Pale Flame</option>
-                                        <option value="BSC">2-Piece Bloodstained Chivalry</option>
-                                        <option value="Noblesse">2-Piece Noblesse Oblige</option>
+                                        <option value="PaleFlame2p">2-Piece Pale Flame</option>
+                                        <option value="BSC2p">2-Piece Bloodstained Chivalry</option>
+                                        <option value="Noblesse2p">2-Piece Noblesse Oblige</option>
                                         <option value = "other">Other</option>
                                     </select>
                                 </div>
                             </div>
                             <div class = "row">
-                                <div class ="col-sm-6" id = "artifacts-2piece-set2-1"></div>
-                                <div class ="col-sm-6" id = "artifacts-2piece-set2-2"></div>
+                                <div class ="col-sm-6" id = "artifacts-2p-set2-1"></div>
+                                <div class ="col-sm-6" id = "artifacts-2p-set2-2"></div>
                             </div>
                             <div class="row">
                                 <div class = "col-sm-6">                       
@@ -239,23 +238,23 @@
                                 <div class = "col-sm-6">                   
                                     <select id="artifacts-4piece-set2" name ="Artifacts">
                                         <option id = "Select Artifacts2">Select Set</option>
-                                        <option value="Thundering Fury">2-Piece Thundering Fury</option>
+                                        <option value="ThunderingFury2p">2-Piece Thundering Fury</option>
                                         <option>2-Piece Gladiator's Finale</option>
                                         <option>2-Piece Shimenawa's Reminiscence</option>
-                                        <option value="Pale Flame">2-Piece Pale Flame</option>
-                                        <option value="BSC">2-Piece Bloodstained Chivalry</option>
-                                        <option value="Noblesse">2-Piece Noblesse Oblige</option>
-                                        <option value="Pale Flame 4p">4-Piece Pale Flame</option>
-                                        <option value="Thundersoother">4-Piece Thundersoother</option>
-                                        <option value="Gladiator">4-Piece Gladiator's Finale</option>
-                                        <option value="Shimenawa">4-Piece Shimenawa's Reminiscence</option>
+                                        <option value="PaleFlame2p">2-Piece Pale Flame</option>
+                                        <option value="BSC2p">2-Piece Bloodstained Chivalry</option>
+                                        <option value="Noblesse2p">2-Piece Noblesse Oblige</option>
+                                        <option value="PaleFlame4p">4-Piece Pale Flame</option>
+                                        <option value="Thundersoother4p">4-Piece Thundersoother</option>
+                                        <option value="Gladiator4p">4-Piece Gladiator's Finale</option>
+                                        <option value="Shimenawa4p">4-Piece Shimenawa's Reminiscence</option>
                                         <option value = "other">Other</option>
                                     </select>
                                 </div>
                             </div>
                             <div class = "row">
-                                <div class ="col-sm-6" id = "artifacts-4piece-set2-1"></div>
-                                <div class ="col-sm-6" id = "artifacts-4piece-set2-2"></div>
+                                <div class ="col-sm-6" id = "artifacts-4p-set2-1"></div>
+                                <div class ="col-sm-6" id = "artifacts-4p-set2-2"></div>
                             </div>
                             <div class ="row">
                                 <div class = "col-sm-6">
@@ -345,30 +344,27 @@
                     <div style="text-align: center" class="row">
                         <div class="col-sm-1"></div>                
                         <div class="col-sm-1"><p>N1</p></div>
-                        <div class="col-sm-1"><p>CA</p></div>
-                        <div class="col-sm-2"><p>Stiletto</p></div>
-                        <div class="col-sm-1"><p>Slash</p></div>
-                        <div class="col-sm-2"><p>Thunderclap Slash</p></div>
+                        <div class="col-sm-2"><p>CA</p></div>
+                        <div class="col-sm-2"><p>Skill Cast</p></div>
+                        <div class="col-sm-2"><p>Skill Recast</p></div>
                         <div class="col-sm-2"><p>Burst Damage</p></div>
                         <div class="col-sm-2"><p>Total Rotation Damage</p></div>
                     </div>
                     <div style="text-align: center" class="row">
                         <div class="col-sm-1"><p>Set One Numbers:</p></div>                
                         <div class="col-sm-1"><p id = "NA-set1"></p></div>
-                        <div class="col-sm-1"><p id = "CA-set1"></p></div>
+                        <div class="col-sm-2"><p id = "CA-set1"></p></div>
                         <div class="col-sm-2"><p id = "E1-set1"></p></div>
-                        <div class="col-sm-1"><p id = "E2-set1"></p></div>
-                        <div class="col-sm-2"><p id = "E3-set1"></p></div>
+                        <div class="col-sm-2"><p id = "E2-set1"></p></div>
                         <div class="col-sm-2"><p id = "Q-set1"></p></div>
                         <div class="col-sm-2"><p id = "Total-set1"></p></div>
                     </div>
                     <div style="text-align: center" class="row">
                         <div class="col-sm-1"><p>Set Two Numbers:</p></div>                
                         <div class="col-sm-1"><p id = "NA-set2"></p></div>
-                        <div class="col-sm-1"><p id = "CA-set2"></p></div>
+                        <div class="col-sm-2"><p id = "CA-set2"></p></div>
                         <div class="col-sm-2"><p id = "E1-set2"></p></div>
-                        <div class="col-sm-1"><p id = "E2-set2"></p></div>
-                        <div class="col-sm-2"><p id = "E3-set2"></p></div>
+                        <div class="col-sm-2"><p id = "E2-set2"></p></div>
                         <div class="col-sm-2"><p id = "Q-set2"></p></div>
                         <div class="col-sm-2"><p id = "Total-set2"></p></div>
                     </div>
@@ -380,22 +376,65 @@
                 </div>
             </div>
 
-            <div id = "advanced-view">
+            <div id = "instructions-view">
                 <div class="row">
-                    <div class="col-sm-2">
-                        <img style = "width: 106px; height: 106px;" src ="Keqing.png">
+                    <div class="col-sm-3">
+                        <img src ="Keqing.png">
                     </div>
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-8"  style = "text-align: center;">
+                    <div class="col-sm-9"  style = "text-align: center;">
                         <h2>Keqing Gear Comparision Calculator</h2>
                         <p>By 3b00d_09#2235</p>
                     </div>
                 </div>
-
+                
                 <div>
-                    <button class = "view-button" onclick = "basicView()"> Basic View </button>
-                    <button class = "view-button"onclick = "advancedView()"> Advanced View </button>
+                    <button class = "view-button basic-view-btn">Calculator</button>
+                    <button class = "view-button advanced-view-btn"> About</button>
                 </div>
+
+                <div class = "instructions">
+                    <h1>About</h1>
+                    <p>
+                        Hey everyone, this Keqing Calculator is meant to help you figure out which set of stats between two sets will net you 
+                        the most damage. For Genshin Optimizer users, please stick to Genshin Optimizer as this calculator is meant to
+                        serve as an alternative to those who cannot use the Genshin Optimizer, not a replacement.
+                    </p>
+                    <p>If you have any questions or run into weird behaviour please feel free to reach out to me on Discord. My DMs are open
+                        to KQM members.
+                    </p>
+                    <h1>How to Use</h1>
+                    <p>
+                        <ul>
+                            <li>
+                                Head over to the character screen and input the stats exactly as you see them. You can find Keqing's Base Attack
+                                by clicking on more details and inputting the white Attack number.
+                            </li>
+                            <li>
+                                The 15% Crit Rate from her Ascension 4 buff has to be inputted manually.
+                            </li>
+                            <li>
+                                Your Goblet type is the same as your Infusion type (ex: Physical goblet means Physical Keqing)
+                            </li>
+                            <li>
+                                Weapon choice only matters for weapons that dynamically give your character buffs (or The Black Sword). For example, Mistsplitter
+                                will give you different buffs based on different situations, same for Lion's Roar. However, Jade Cutter will give you the same
+                                exact buffs no matter the situation, so simply inputting the stats is enough. 
+                            </li>
+                            <li>
+                                Numbers won’t be perfectly accurate because of rounding, variable enemy resistances and defenses. 
+                                This calculator assumes level 90 enemy and 10% Electro resistance.
+                            </li>
+                            <li>
+                                If you click on the "Compare" button and see "NaN" values, please go back and check that you inputted everything correctly.
+                            </li>
+                            <li>
+                                "Total Rotation Damage" is 1 Skill, 1 Burst, 1 Skill Recast, and 5 Normal into Charged Attacks. Includes Aquila 
+                                passive proc if valid.
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+            
             </div>
         </div>
     </body>

@@ -23,21 +23,17 @@ p{
 .hidden{
     display: none;
 }
-.rowspaced{
-    margin-top: 1rem;
-}
 
 option{
     text-align: center;
 }
 
 select{
-    width: 188px;
-    padding:2px;
+    width: 80%;
+    padding: 5px;
 }
-
 input{
-    width:188px;
+    width: 80%;
 }
 
 .difference{
@@ -66,9 +62,6 @@ body{
 transform: translateY(2px);
 }     
 
-#advanced-view{
-    display: none;
-}
 
 #refine-set1{
     display:none;
@@ -82,6 +75,21 @@ transform: translateY(2px);
     transform: scale(1.5);
 }
 
-.row{
+.instructions{
+    padding: 12px;
+}
+
+
+img{
+    width: 60%;
+}
+
+
+#instructions-view{
+    display: none;
+}
+
+li{
     margin: 6px 0px;
 }
+

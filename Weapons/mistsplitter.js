@@ -1,5 +1,7 @@
 
 export function MistsplitterDisplay(selectID, parent1, parent2){
+
+
     // empty the parent from previous stack toggles
     parent1.textContent = ""
     parent2.textContent = ""
