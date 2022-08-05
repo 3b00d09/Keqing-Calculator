@@ -15,7 +15,7 @@
             <div id = "calculator-view">
                 <div class="row">
                     <div class="col-sm-3">
-                        <img src ="Keqing.png">
+                        <img src ="Assets/Keqing-skin.png" class = "keqing-image">
                     </div>
                     <div class="col-sm-9"  style = "text-align: center;">
                         <h2>Keqing Gear Comparision Calculator</h2>
@@ -24,8 +24,8 @@
                 </div>
 
                 <div>
+                    <button class = "view-button about-view-btn">About</button>
                     <button class = "view-button basic-view-btn"> Calculator </button>
-                    <button class = "view-button advanced-view-btn">About</button>
                 </div>
 
                 <div class="row">
@@ -370,16 +370,15 @@
                     </div>
                 </div>
                 <div class = "row justify-content-center">
-                    <div class = "col-sm-4">
-                        <div class = "difference" id = "difference"></div>
+                    <div class = "col-sm-4" id = "difference">
                     </div>
                 </div>
             </div>
 
-            <div id = "instructions-view">
+            <div id = "about-view">
                 <div class="row">
                     <div class="col-sm-3">
-                        <img src ="Keqing.png">
+                        <img src ="Assets/Keqing-skin.png" class ="keqing-image">
                     </div>
                     <div class="col-sm-9"  style = "text-align: center;">
                         <h2>Keqing Gear Comparision Calculator</h2>
@@ -388,54 +387,57 @@
                 </div>
                 
                 <div>
+                    <button class = "view-button about-view-btn"> About</button>
                     <button class = "view-button basic-view-btn">Calculator</button>
-                    <button class = "view-button advanced-view-btn"> About</button>
                 </div>
 
-                <div class = "instructions">
+                <div class = "about">
                     <h1>About</h1>
                     <p>
                         Hey everyone, this Keqing Calculator is meant to help you figure out which set of stats between two sets will net you 
                         the most damage. For Genshin Optimizer users, please stick to Genshin Optimizer as this calculator is meant to
-                        serve as an alternative to those who cannot use the Genshin Optimizer, not a replacement.
+                        serve as an alternative to those who cannot use the Genshin Optimizer, not a replacement. The Genshin Optimizer is
+                        still a far superior tool.
                     </p>
                     <p>If you have any questions or run into weird behaviour please feel free to reach out to me on Discord. My DMs are open
                         to KQM members.
                     </p>
-                    <h1>How to Use</h1>
-                    <p>
-                        <ul>
-                            <li>
-                                Head over to the character screen and input the stats exactly as you see them. You can find Keqing's Base Attack
-                                by clicking on more details and inputting the white Attack number.
-                            </li>
-                            <li>
-                                The 15% Crit Rate from her Ascension 4 buff has to be inputted manually.
-                            </li>
-                            <li>
-                                Your Goblet type is the same as your Infusion type (ex: Physical goblet means Physical Keqing)
-                            </li>
-                            <li>
-                                Weapon choice only matters for weapons that dynamically give your character buffs (or The Black Sword). For example, Mistsplitter
-                                will give you different buffs based on different situations, same for Lion's Roar. However, Jade Cutter will give you the same
-                                exact buffs no matter the situation, so simply inputting the stats is enough. 
-                            </li>
-                            <li>
-                                Numbers won’t be perfectly accurate because of rounding, variable enemy resistances and defenses. 
-                                This calculator assumes level 90 enemy and 10% Electro resistance.
-                            </li>
-                            <li>
-                                If you click on the "Compare" button and see "NaN" values, please go back and check that you inputted everything correctly.
-                            </li>
-                            <li>
-                                "Total Rotation Damage" is 1 Skill, 1 Burst, 1 Skill Recast, and 5 Normal into Charged Attacks. Includes Aquila 
-                                passive proc if valid.
-                            </li>
-                        </ul>
-                    </p>
-                </div>
+                    </div>
+
+                    <div class = "instructions">
+                        <h1>How to Use</h1>
+                            <ul>
+                                <li>
+                                    Head over to the character screen and input the stats exactly as you see them. You can find Keqing's Base Attack
+                                    by clicking on more details and inputting the white Attack number.
+                                </li>
+                                <li>
+                                    The 15% Crit Rate from her Ascension 4 buff has to be inputted manually.
+                                </li>
+                                <li>
+                                    Your Goblet type is the same as your Infusion type (ex: Physical goblet means Physical Keqing)
+                                </li>
+                                <li>
+                                    Weapon choice only matters for weapons that dynamically give your character buffs (or The Black Sword). For example, Mistsplitter
+                                    will give you different buffs based on different situations, same for Lion's Roar. However, Jade Cutter will give you the same
+                                    exact buffs no matter the situation, so simply inputting the stats is enough. 
+                                </li>
+                                <li>
+                                    Numbers won’t be perfectly accurate because of rounding, variable enemy resistances and defenses. 
+                                    This calculator assumes level 90 enemy and 10% Electro resistance.
+                                </li>
+                                <li>
+                                    If you click on the "Compare" button and see "NaN" values, please go back and check that you inputted everything correctly.
+                                </li>
+                                <li>
+                                    "Total Rotation Damage" is 1 Skill, 1 Burst, 1 Skill Recast, and 5 Normal into Charged Attacks. Includes Aquila 
+                                    passive proc if valid.
+                                </li>
+                            </ul>
+                        </div>
             
             </div>
+
         </div>
     </body>
 </html>

@@ -373,9 +373,12 @@ function attachEventListeners(){
 
 
 
-    document.getElementById("calc-button").addEventListener("click", () =>{
+    document.getElementById("calc-button").addEventListener("click", async () =>{
+        
         GetValues1()
         GetValues2()
+
+        await GetDifference()
     });
 
 }
@@ -631,23 +634,55 @@ function viewSetTwoDamage(damage){
     document.querySelector("#Total-set2").textContent = Math.round(damage.Total)
 }
 
+async function GetDifference(){
+
+
+    let set1Damage = parseFloat(document.getElementById("Total-set1").textContent);
+    let set2Damage = parseFloat(document.getElementById("Total-set2").textContent);
+    let div = document.getElementById("difference");
+
+
+    console.log(set1Damage)
+    console.log(set2Damage)
+
+
+    let difference = (set1Damage / set2Damage) * 100;
+    difference = Math.round(difference)
+
+    if (!isNaN(difference)){
+        div.style.display = "initial"
+        if (difference === 100){
+            div.textContent = "Both sets deal equal damage."
+        }
+        else if (difference < 100){
+            div.textContent = `Set one is weaker than set two by ${100 - difference}%`
+        }
+        else{
+            div.textContent = `Set one is stronger than set two by ${difference - 100}%`
+        }
+    }
+
+    
+}
 
 
 document.querySelectorAll(".basic-view-btn").forEach((btn) => {
 
     btn.addEventListener("click", () =>{
-        document.querySelector("#instructions-view").style.display = "none";
+        document.querySelector("#about-view").style.display = "none";
         document.querySelector("#calculator-view").style.display = "block";
     })
 })
 
 
 
-document.querySelectorAll(".advanced-view-btn").forEach((btn) =>{
+document.querySelectorAll(".about-view-btn").forEach((btn) =>{
     btn.addEventListener("click", () =>{
         document.querySelector("#calculator-view").style.display = "none";
-        document.querySelector("#instructions-view").style.display = "block";
+        document.querySelector("#about-view").style.display = "block";
     })
+
 })
+
 
 

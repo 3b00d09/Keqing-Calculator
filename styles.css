@@ -29,14 +29,15 @@ option{
 }
 
 select{
+    padding: 5px 0px;
     width: 80%;
-    padding: 5px;
 }
+
 input{
     width: 80%;
 }
 
-.difference{
+#difference{
     padding: 10px;
     text-align: center;
     border: 1px solid rgb(44, 5, 44);
@@ -75,17 +76,23 @@ transform: translateY(2px);
     transform: scale(1.5);
 }
 
-.instructions{
+
+.about{
     padding: 12px;
+    width: 100%;
 }
 
 
-img{
+.keqing-image{
     width: 60%;
 }
 
 
 #instructions-view{
+    display: none;
+}
+
+#about-view{
     display: none;
 }
 
