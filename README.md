@@ -1,9 +1,10 @@
 # Keqing-Calculator
 A simple Keqing calculator to help you figure out what set of Artifacts / Weapons will net you the most damage. 
 
+If you are familiar with [Genshin Optimizer](frzyc.github.io/genshin-optimizer), this tool is a meant to serve as an alternative to people who can't use the Genshin Optimizer (mostly Mobile and Console players).
+
 For any questions or feedback feel free to message me on discord, 3b00d_09#2235 (DMs open to people with mutual servers).
 
-If you are familiar with [Genshin Optimizer](frzyc.github.io/genshin-optimizer), this tool is a meant to serve as an alternative to people who can't use the Genshin Optimizer (mostly Mobile and Console players).
 
 # How to Use
 
