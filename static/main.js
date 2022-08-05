@@ -28,6 +28,13 @@ const Burst_Talent = [4.688, 5.0396, 5.3912, 5.86, 6.2116, 6.5632, 7.032, 7.5008
 loadTalents()
 attachEventListeners()
 
+if(window.innerWidth < 960){
+    document.querySelector(".calcbody").classList.remove("container")
+}
+else{
+    document.querySelector(".calcbody").classList.add("container")
+}
+
 
 const Weapons = {
     Mistsplitter:{
@@ -699,14 +706,3 @@ document.querySelectorAll(".about-view-btn").forEach((btn) =>{
     })
 
 })
-
-//on resize
-window.addEventListener('resize',() => {
-    if(window.innerWidth < 960){
-        document.querySelector(".calcbody").classList.remove("container")
-    }
-    else{
-        document.querySelector(".calcbody").classList.add("container")
-    }
-  });
-
