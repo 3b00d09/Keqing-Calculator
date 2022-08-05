@@ -1,19 +1,20 @@
 
-import { MistsplitterBuffsSetOne, MistsplitterBuffsSetTwo, MistsplitterDisplay } from "./Weapons/mistsplitter.js";
-import { SummitShaperStacks, SummitBuffsSetOne, SummitBuffsSetTwo } from "./Weapons/summitshaper.js";
-import { LionsRoarToggle, LionsRoarBuffSetOne, LionsRoarBuffSetTwo } from "./Weapons/lionsroar.js";
-import { Blacksword, BlackswordBuffSetOne, BlackswordBuffSetTwo } from "./Weapons/blacksword.js";
-import { AquilaDisplay,  AquilaBuffsSetOne, AquilaBuffsSetTwo } from "./Weapons/aquila.js";
-import { BlackcliffStacks, BlackcliffBuffSetOne, BlackcliffBuffSetTwo } from "./Weapons/blackcliff.js";
-import { RancourStacks, RancourBuffSetOne, RancourBuffSetTwo } from "./Weapons/rancour.js";
+import { MistsplitterBuffsSetOne, MistsplitterBuffsSetTwo, MistsplitterDisplay } from "../Weapons/mistsplitter.js";
+import { SummitShaperStacks, SummitBuffsSetOne, SummitBuffsSetTwo } from "../Weapons/summitshaper.js";
+import { LionsRoarToggle, LionsRoarBuffSetOne, LionsRoarBuffSetTwo } from "../Weapons/lionsroar.js";
+import { Blacksword, BlackswordBuffSetOne, BlackswordBuffSetTwo } from "../Weapons/blacksword.js";
+import { AquilaDisplay,  AquilaBuffsSetOne, AquilaBuffsSetTwo } from "../Weapons/aquila.js";
+import { BlackcliffStacks, BlackcliffBuffSetOne, BlackcliffBuffSetTwo } from "../Weapons/blackcliff.js";
+import { RancourStacks, RancourBuffSetOne, RancourBuffSetTwo } from "../Weapons/rancour.js"
 
-import { PaleFlameDisplay2p, PaleFlameDisplay4p, PaleFlameBuffs } from "./Artifacts/paleflame.js";
-import { ShimenawaDisplay4p, ShimenawaBuffs } from "./Artifacts/shimenawa.js";
-import { ThundersootherDisplay4p ,ThundersootherBuffs } from "./Artifacts/thundersoother.js";
-import { ThunderingFuryBuffs, ThunderingFuryDisplay } from "./Artifacts/thunderingfury.js";
-import { NoblesseBuffs, NoblesseDisplay } from "./Artifacts/noblesse.js";
-import { BloodstainedBuffs, BloodstainedDisplay } from "./Artifacts/bloodstained.js";
-import { Gladiator4pBuffs, Gladiator4pDisplay } from "./Artifacts/gladiator.js";
+import { PaleFlameDisplay2p, PaleFlameDisplay4p, PaleFlameBuffs } from "../Artifacts/paleflame.js";
+import { ShimenawaDisplay4p, ShimenawaBuffs } from "../Artifacts/shimenawa.js";
+import { ThundersootherDisplay4p ,ThundersootherBuffs } from "../Artifacts/thundersoother.js";
+import { ThunderingFuryBuffs, ThunderingFuryDisplay } from "../Artifacts/thunderingfury.js";
+import { NoblesseBuffs, NoblesseDisplay } from "../Artifacts/noblesse.js";
+import { BloodstainedBuffs, BloodstainedDisplay } from "../Artifacts/bloodstained.js";
+import { Gladiator4pBuffs, Gladiator4pDisplay } from "../Artifacts/gladiator.js";
+
 
 
 
