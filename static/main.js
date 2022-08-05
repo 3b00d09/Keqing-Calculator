@@ -700,5 +700,13 @@ document.querySelectorAll(".about-view-btn").forEach((btn) =>{
 
 })
 
-
+//on resize
+window.addEventListener('resize',() => {
+    if(window.innerWidth < 960){
+        document.querySelector(".calcbody").classList.remove("container")
+    }
+    else{
+        document.querySelector(".calcbody").classList.add("container")
+    }
+  });
 
