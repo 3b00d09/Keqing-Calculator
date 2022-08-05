@@ -459,6 +459,16 @@ function GetValues1(){
     // for damage display (crit vs non crit vs average damage)
     let display = document.getElementById("display").value;
 
+    if (display === "crit"){
+        CharacterStats.CritRate = 1
+    }
+    else if(display === "no-crit"){
+        CharacterStats.CritRate = 0
+    }
+    else{
+        CharacterStats.CritRate = parseFloat(document.getElementById("cr").value) / 100;
+    }
+
 
     // add weapon buffs
     if (weapon){
@@ -493,10 +503,6 @@ function GetValues1(){
             CharacterStats[`${buff.Type}`] += buff.Value
         })
     }
-
-    
-
-    console.log(CharacterStats)
     
 
     let damage = calc(CharacterStats, GobletType);
@@ -521,6 +527,19 @@ function GetValues2(){
     CharacterStats.SkillTalentCast = Stiletto_Talent[parseInt(document.getElementById("skill_talent_set2").value)];
     CharacterStats.SkillTalentRecast = Recast_Talent[parseInt(document.getElementById("skill_talent_set2").value)];
     CharacterStats.BurstTalent = Burst_Talent[parseInt(document.getElementById("burst_talent_set2").value)];
+
+    // for damage display (crit vs non crit vs average damage)
+    let display = document.getElementById("display-set2").value;
+
+    if (display === "crit"){
+        CharacterStats.CritRate = 1
+    }
+    else if(display === "no-crit"){
+        CharacterStats.CritRate = 0
+    }
+    else{
+        CharacterStats.CritRate = parseFloat(document.getElementById("cr2").value) / 100;
+    }
 
         // add weapon buffs
         if (weapon2){
@@ -553,7 +572,7 @@ function GetValues2(){
                 CharacterStats[`${buff.Type}`] += buff.Value
             })
         }
-    console.log(CharacterStats)
+
     
     let damage = calc(CharacterStats, GobletType);
 
@@ -641,10 +660,6 @@ async function GetDifference(){
     let set1Damage = parseFloat(document.getElementById("Total-set1").textContent);
     let set2Damage = parseFloat(document.getElementById("Total-set2").textContent);
     let div = document.getElementById("difference");
-
-
-    console.log(set1Damage)
-    console.log(set2Damage)
 
 
     let difference = (set1Damage / set2Damage) * 100;
