@@ -109,7 +109,7 @@ transform: translateY(2px);
     width: 126px;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
     .keqing-image-container{
         text-align: center;
     }
