@@ -46,10 +46,12 @@ option{
 select{
     padding: 5px 0px;
     width: 80%;
+    height: 100%;
 }
 
 input{
     width: 80%;
+    height: 100%;
 }
 
 #difference{
@@ -111,3 +113,6 @@ li{
     margin: 6px 0px;
 }
 
+.col-sm-6{
+    height: auto;
+}
