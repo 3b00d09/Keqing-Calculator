@@ -1,3 +1,11 @@
+body{
+    background-color: #36393f;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 label{
     color:white;
     margin: 0;
@@ -5,9 +13,16 @@ label{
 
 .calcbody{
     background-color: #433969 ;
-    padding: 1rem !important;
-    color: white !important;
-  }
+    padding: 1rem;
+    color: white;
+    width:80%;
+}
+
+@media (max-width: 960px) {
+    .calcbody{
+        width: 100%;
+    }
+}
 
 p{
     color: white;
@@ -45,10 +60,6 @@ input{
     margin: 5px;
     display: none;
   }
-
-body{
-    background-color: #36393f;
-}
 
 .view-button{
     margin: 12px 0px;
