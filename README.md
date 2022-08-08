@@ -19,6 +19,6 @@ won't show you accurate numbers. However, it will still compare the two sets to 
 For example, Mistsplitter will give you different Damage Bonuses based on different stacks. Lion's Roar will give you a Damage Bonus if you are fighting Enemies that 
 are inflicted with Electro. Weapons that give static buffs, like Jade Cutter, do not need to be inputted, and you can just click on "Other". 
 - The above applies to Artifacts as well.
-- "Total Rotation Damage" is 5 Normals, 5 Charged Attacks, 1 Skill cast, 1 Skill recast, and 1 Elemental Burst cast. Weapon Passive included for Aquila Favonia.
+- "Total Rotation Damage" is 5 Normals, 5 Charged Attacks, 1 Skill cast, 1 Skill recast, and 1 Elemental Burst cast. Weapon Passive included if valid.
 - Currently there is no way to add Team Buffs. This is pure solo Keqing damage. Team Buffs will be added in the future. 
 

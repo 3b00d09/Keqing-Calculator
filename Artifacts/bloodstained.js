@@ -4,7 +4,7 @@ export function BloodstainedDisplay(parent1, parent2){
     parent1.textContent = ""
     parent2.textContent = ""
 
-    parent2.textContent = "25% Bonus Physical Damage."
+    parent2.textContent = "25% Bonus Physical Damage"
 
 }
 

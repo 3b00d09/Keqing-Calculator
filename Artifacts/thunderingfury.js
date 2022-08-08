@@ -4,7 +4,7 @@ export function ThunderingFuryDisplay(parent1, parent2){
     parent1.textContent = ""
     parent2.textContent = ""
 
-    parent2.textContent = "15% Bonus Electro Damage."
+    parent2.textContent = "15% Bonus Electro Damage"
 }
 
 export function ThunderingFuryBuffs(){

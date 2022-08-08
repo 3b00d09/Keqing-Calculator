@@ -4,7 +4,7 @@ export function Gladiator4pDisplay(parent1, parent2){
     parent1.textContent = ""
     parent2.textContent = ""
 
-    parent2.textContent = "35% Bonus Damage to Normal Attacks."
+    parent2.textContent = "35% Bonus Damage to Normal Attacks"
 }
 
 export function Gladiator4pBuffs(){
