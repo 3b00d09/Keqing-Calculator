@@ -1,11 +1,14 @@
-
 import { MistsplitterBuffsSetOne, MistsplitterBuffsSetTwo, MistsplitterDisplay } from "../Weapons/mistsplitter.js";
+import { HaranBuffsSetOne, HaranBuffsSetTwo, HaranDisplay } from "../Weapons/haran.js";
 import { SummitShaperStacks, SummitBuffsSetOne, SummitBuffsSetTwo } from "../Weapons/summitshaper.js";
 import { LionsRoarToggle, LionsRoarBuffSetOne, LionsRoarBuffSetTwo } from "../Weapons/lionsroar.js";
 import { Blacksword, BlackswordBuffSetOne, BlackswordBuffSetTwo } from "../Weapons/blacksword.js";
 import { AquilaDisplay,  AquilaBuffsSetOne, AquilaBuffsSetTwo } from "../Weapons/aquila.js";
 import { BlackcliffStacks, BlackcliffBuffSetOne, BlackcliffBuffSetTwo } from "../Weapons/blackcliff.js";
 import { RancourStacks, RancourBuffSetOne, RancourBuffSetTwo } from "../Weapons/rancour.js"
+import { KagotsurubeBuffsSetOne, KagotsurubeBuffsSetTwo, KagotsurubeDisplay } from "../Weapons/kagotsurube.js";
+
+///////////////////////////////////////
 
 import { PaleFlameDisplay2p, PaleFlameDisplay4p, PaleFlameBuffs } from "../Artifacts/paleflame.js";
 import { ShimenawaDisplay4p, ShimenawaBuffs } from "../Artifacts/shimenawa.js";
@@ -14,8 +17,6 @@ import { ThunderingFuryBuffs, ThunderingFuryDisplay } from "../Artifacts/thunder
 import { NoblesseBuffs, NoblesseDisplay } from "../Artifacts/noblesse.js";
 import { BloodstainedBuffs, BloodstainedDisplay } from "../Artifacts/bloodstained.js";
 import { Gladiator4pBuffs, Gladiator4pDisplay } from "../Artifacts/gladiator.js";
-
-
 
 
 const N1_Talent = [0.4102, 0.4436, 0.477, 0.5247, 0.5581, 0.5962, 0.6487, 0.7012, 0.7537, 0.8109, 0.8681, 0.9254, 0.9826];
@@ -27,8 +28,6 @@ const Burst_Talent = [4.688, 5.0396, 5.3912, 5.86, 6.2116, 6.5632, 7.032, 7.5008
 
 loadTalents()
 attachEventListeners()
-
-
 
 
 const Weapons = {
@@ -45,6 +44,22 @@ const Weapons = {
         },
         buffsSetTwo(){
             let buffs = MistsplitterBuffsSetTwo()
+            return buffs
+        }
+    },
+    Haran:{
+        DisplayInfoSetOne(div1, div2){
+            HaranDisplay("set-one-weapon-stacks", div1, div2)
+        },
+        DisplayInfoSetTwo(div1, div2){
+            HaranDisplay("set-two-weapon-stacks", div1, div2)
+        },
+        buffsSetOne(){
+            let buffs = HaranBuffsSetOne()
+            return buffs
+        },
+        buffsSetTwo(){
+            let buffs = HaranBuffsSetTwo()
             return buffs
         }
     },
@@ -96,6 +111,22 @@ const Weapons = {
         },
         buffsSetTwo(){
             let buffs = BlackswordBuffSetTwo()
+            return buffs
+        }
+    },
+    Kagotsurube:{
+        DisplayInfoSetOne(div1, div2){
+            KagotsurubeDisplay(div1, div2)
+        },
+        DisplayInfoSetTwo(div1, div2){
+            KagotsurubeDisplay(div1, div2)
+        },
+        buffsSetOne(CharacterStats){
+            let buffs = KagotsurubeBuffsSetOne(CharacterStats)
+            return buffs
+        },
+        buffsSetTwo(CharacterStats){
+            let buffs = KagotsurubeBuffsSetTwo(CharacterStats)
             return buffs
         }
     },
@@ -475,7 +506,7 @@ function GetValues1(){
     // add weapon buffs
     if (weapon){
 
-        if (weapon === Weapons.Aquila){ 
+        if (weapon === Weapons.Aquila || weapon === Weapons.Kagotsurube){ 
 
             let weaponBuffs = weapon.buffsSetOne(CharacterStats)
             weaponBuffs.forEach((buff) =>{
@@ -545,7 +576,7 @@ function GetValues2(){
 
         // add weapon buffs
         if (weapon2){
-            if (weapon2 === "Aquila"){
+            if (weapon2 === Weapons.Aquila || weapon === Weapons.Kagotsurube){
                 let weaponBuffs = weapon2.buffsSetTwo(CharacterStats)
                 weaponBuffs.forEach((buff) =>{
                     CharacterStats[`${buff.Type}`] += buff.Value
