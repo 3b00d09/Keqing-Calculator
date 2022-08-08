@@ -65,11 +65,11 @@ const Weapons = {
     },
 
     SummitShaper:{
-        DisplayInfoSetOne(){
-            SummitShaperStacks("set-one-weapon-stacks", "set-one-weapon-toggle", "one")
+        DisplayInfoSetOne(div1, div2){
+            SummitShaperStacks("set-one-weapon-stacks", "set-one-weapon-toggle", div1, div2)
         },
-        DisplayInfoSetTwo(){
-            SummitShaperStacks("set-two-weapon-stacks", "set-two-weapon-toggle", "two")
+        DisplayInfoSetTwo(div1, div2){
+            SummitShaperStacks("set-two-weapon-stacks", "set-two-weapon-toggle", div1, div2)
         },
         buffsSetOne(){
             let buffs = SummitBuffsSetOne()
@@ -82,11 +82,11 @@ const Weapons = {
     },
 
     LionsRoar:{
-        DisplayInfoSetOne(){
-            LionsRoarToggle("set-one-weapon-toggle", "one")
+        DisplayInfoSetOne(div1, div2){
+            LionsRoarToggle("set-one-weapon-toggle", div1, div2)
         },
-        DisplayInfoSetTwo(){
-            LionsRoarToggle("set-two-weapon-toggle", "two")
+        DisplayInfoSetTwo(div1, div2){
+            LionsRoarToggle("set-two-weapon-toggle", div1, div2)
         },
         buffsSetOne(){
             let buffs = LionsRoarBuffSetOne()
@@ -99,11 +99,11 @@ const Weapons = {
     },
 
     BlackSword:{
-        DisplayInfoSetOne(){
-            Blacksword("one")
+        DisplayInfoSetOne(div1, div2){
+            Blacksword(div1, div2)
         },
-        DisplayInfoSetTwo(){
-            Blacksword("two")
+        DisplayInfoSetTwo(div1, div2){
+            Blacksword(div1, div2)
         },
         buffsSetOne(){
             let buffs = BlackswordBuffSetOne()
@@ -132,11 +132,11 @@ const Weapons = {
     },
 
     Aquila:{
-        DisplayInfoSetOne(){
-            AquilaDisplay("one")
+        DisplayInfoSetOne(div1, div2){
+            AquilaDisplay(div1, div2)
         },
-        DisplayInfoSetTwo(){
-            AquilaDisplay("two")
+        DisplayInfoSetTwo(div1, div2){
+            AquilaDisplay(div1, div2)
         },
         buffsSetOne(CharacterStats){
             let buffs = AquilaBuffsSetOne(CharacterStats)
@@ -149,11 +149,11 @@ const Weapons = {
     },
     
     BlackcliffLongsword:{
-        DisplayInfoSetOne(){
-            BlackcliffStacks("set-one-weapon-stacks", "one")
+        DisplayInfoSetOne(div1, div2){
+            BlackcliffStacks("set-one-weapon-stacks", div1, div2)
         },
-        DisplayInfoSetTwo(){
-            BlackcliffStacks("set-two-weapon-stacks", "two")
+        DisplayInfoSetTwo(div1, div2){
+            BlackcliffStacks("set-two-weapon-stacks", div1, div2)
         },
         buffsSetOne(){
             let buffs = BlackcliffBuffSetOne()
@@ -167,11 +167,11 @@ const Weapons = {
     },
 
     PrototypeRancour:{
-        DisplayInfoSetOne(){
-            RancourStacks("set-one-weapon-stacks", "one")
+        DisplayInfoSetOne(div1, div2){
+            RancourStacks("set-one-weapon-stacks", div1, div2)
         },
-        DisplayInfoSetTwo(){
-            RancourStacks("set-two-weapon-stacks", "two")
+        DisplayInfoSetTwo(div1, div2){
+            RancourStacks("set-two-weapon-stacks", div1, div2)
         },
         buffsSetOne(){
             let buffs = RancourBuffSetOne()

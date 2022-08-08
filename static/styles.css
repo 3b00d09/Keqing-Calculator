@@ -59,6 +59,13 @@ input{
     height: 100%;
 }
 
+
+/* override the input css above it, im too dumb to do this the right way so it is what it is */
+.weapon-toggle, .artifact-4p-toggle, .artifact-2p-toggle{
+    height: auto;
+}
+
+
 #difference{
     padding: 10px;
     text-align: center;
@@ -90,7 +97,7 @@ transform: translateY(2px);
     display:none;
 }
 
-.weapon-toggle{
+.weapon-toggle, .artifact-4p-toggle, .artifact-2p-toggle{
     transform: scale(1.5);
 }
 
