@@ -720,6 +720,7 @@ document.querySelectorAll(".basic-view-btn").forEach((btn) => {
     btn.addEventListener("click", () =>{
         document.querySelector("#about-view").style.display = "none";
         document.querySelector("#calculator-view").style.display = "block";
+        document.querySelector("#results-view").style.display = "none";
     })
 })
 
@@ -729,6 +730,15 @@ document.querySelectorAll(".about-view-btn").forEach((btn) =>{
     btn.addEventListener("click", () =>{
         document.querySelector("#calculator-view").style.display = "none";
         document.querySelector("#about-view").style.display = "block";
+        document.querySelector("#results-view").style.display = "none";
     })
 
+})
+
+document.querySelectorAll(".results-view-btn").forEach((btn) =>{
+    btn.addEventListener("click", () =>{
+        document.querySelector("#calculator-view").style.display = "none";
+        document.querySelector("#about-view").style.display = "none";
+        document.querySelector("#results-view").style.display = "block";
+    })
 })
