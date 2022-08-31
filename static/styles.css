@@ -4,12 +4,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: calc(-1 * (100vw - 100%));
-    overflow-x: hidden;
-}
-
-p{
-    color: white;
 }
 
 p{
@@ -39,11 +33,15 @@ label{
 
 }
 
+p{
+    color: white;
+}
+
 .set{
     background-color: #8969b0;
     text-align: center;
     padding: 5px;
-    color: #000;
+    color: #000 !important;
   }
 
 .hidden{
@@ -95,7 +93,11 @@ transform: translateY(2px);
 }     
 
 
-#refine-set1, #refine-set2{
+#refine-set1{
+    display:none;
+}
+
+#refine-set2{
     display:none;
 }
 
@@ -104,7 +106,7 @@ transform: translateY(2px);
 }
 
 
-.about, .instructions{
+.about{
     padding: 12px;
     width: 100%;
 }
@@ -122,6 +124,13 @@ transform: translateY(2px);
 }
 
 
+#instructions-view{
+    display: none;
+}
+
+#about-view{
+    display: none;
+}
 
 li{
     margin: 6px 0px;
@@ -129,8 +138,4 @@ li{
 
 .col-sm-6{
     height: auto;
-}
-
-#about-view, #results-view{
-    display:none;
 }
