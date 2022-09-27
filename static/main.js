@@ -13,7 +13,7 @@ import { KagotsurubeBuffsSetOne, KagotsurubeBuffsSetTwo, KagotsurubeDisplay } fr
 import { PaleFlameDisplay2p, PaleFlameDisplay4p, PaleFlameBuffs } from "../Artifacts/paleflame.js";
 import { ShimenawaDisplay4p, ShimenawaBuffs } from "../Artifacts/shimenawa.js";
 import { ThundersootherDisplay4p ,ThundersootherBuffs } from "../Artifacts/thundersoother.js";
-import { ThunderingFuryBuffs, ThunderingFuryDisplay } from "../Artifacts/thunderingfury.js";
+import { ThunderingFuryBuffs, ThunderingFuryDisplay2p, ThunderingFuryDisplay4p } from "../Artifacts/thunderingfury.js";
 import { NoblesseBuffs, NoblesseDisplay } from "../Artifacts/noblesse.js";
 import { BloodstainedBuffs, BloodstainedDisplay } from "../Artifacts/bloodstained.js";
 import { Gladiator4pBuffs, Gladiator4pDisplay } from "../Artifacts/gladiator.js";
@@ -188,10 +188,10 @@ const Artifacts = {
 
     ThunderingFury2p:{
         DisplayInfo(set, div1, div2){
-            ThunderingFuryDisplay(div1, div2)
+            ThunderingFuryDisplay2p(div1, div2)
         },
         buffs(set){
-            let buffs = ThunderingFuryBuffs()
+            let buffs = ThunderingFuryBuffs("2piece")
             return buffs
         }
     },
@@ -225,18 +225,27 @@ const Artifacts = {
             return buffs
         }
     },
-        Thundersoother4p:{
-            DisplayInfo(set, div1, div2){
-                let toggleID;
-                set === "one" ? toggleID = "set-one-artifact-4p-toggle" : toggleID = "set-two-artifact-4p-toggle"
-                ThundersootherDisplay4p(toggleID, div1, div2)
-            },
-            buffs(set){
-                let toggleDiv;
-                set === "one" ? toggleDiv = "set-one-artifact-4p-toggle" : toggleDiv = "set-two-artifact-4p-toggle"
-                let buffs = ThundersootherBuffs(toggleDiv)
-                return buffs
-            }
+    Thundersoother4p:{
+        DisplayInfo(set, div1, div2){
+            let toggleID;
+            set === "one" ? toggleID = "set-one-artifact-4p-toggle" : toggleID = "set-two-artifact-4p-toggle"
+            ThundersootherDisplay4p(toggleID, div1, div2)
+        },
+        buffs(set){
+            let toggleDiv;
+            set === "one" ? toggleDiv = "set-one-artifact-4p-toggle" : toggleDiv = "set-two-artifact-4p-toggle"
+            let buffs = ThundersootherBuffs(toggleDiv)
+            return buffs
+        }
+    },
+    ThunderingFury4p:{
+        DisplayInfo(set, div1, div2){
+            ThunderingFuryDisplay4p(div1, div2)
+        },
+        buffs(set){
+            let buffs = ThunderingFuryBuffs("4piece")
+            return buffs
+        }
     },
 
     Gladiator4p:{
@@ -415,6 +424,26 @@ function attachEventListeners(){
         await GetDifference()
     });
 
+    document.getElementById("aggravate-check1").addEventListener("change", (e) =>{
+        if (e.target.checked){
+            document.querySelector(".aggravate-row1").style.display = "flex";
+        }
+
+        else{
+            document.querySelector(".aggravate-row1").style.display = "none";
+        }
+    })
+
+    document.getElementById("aggravate-check2").addEventListener("change", (e) =>{
+        if (e.target.checked){
+            document.querySelector(".aggravate-row2").style.display = "flex";
+        }
+
+        else{
+            document.querySelector(".aggravate-row2").style.display = "none";
+        }
+    })
+
 }
 
 function loadTalents(){
@@ -450,12 +479,14 @@ function ResetStats(){
         ATK: 0,
         CritRate: 0,
         CritDmg: 0,
+        EM: 0,
         ElectroDmg: 0,
         PhysDmg: 0,
         NABonus: 0,
         CABonus: 0,
         SkillBonus: 0,
         BurstBonus: 0,
+        ReactionBonus: 0,
         AllDMG: 0,
         NATalent: 1,
         CATalent: 1,
@@ -472,11 +503,15 @@ function ResetStats(){
 function GetValues1(){
 
     let CharacterStats = ResetStats();
+    let AggravateCount = 0;
 
     // get character stats
     CharacterStats.ATK = parseFloat(document.getElementById("atk").value);
+    CharacterStats.EM = parseFloat(document.getElementById("em").value);
     CharacterStats.CritRate = parseFloat(document.getElementById("cr").value) / 100;
     CharacterStats.CritDmg = parseFloat(document.getElementById("cd").value) / 100;
+    AggravateCount = parseFloat(document.getElementById("aggravatecount").value);
+
     let GobletType = document.getElementById("goblet").value;
     GobletType === "elec" ? (CharacterStats.ElectroDmg = 0.466, CharacterStats.PhysDmg = 0) 
     : (CharacterStats.PhysDmg = 0.583, CharacterStats.ElectroDmg = 0);
@@ -537,8 +572,8 @@ function GetValues1(){
         })
     }
     
-
-    let damage = calc(CharacterStats, GobletType);
+    let aggravateCheck = document.getElementById("aggravate-check1").checked;
+    let damage = calc(CharacterStats, GobletType, AggravateCount, aggravateCheck);
 
     viewSetOneDamage(damage)
 }
@@ -546,10 +581,14 @@ function GetValues1(){
 function GetValues2(){
     let CharacterStats = ResetStats();
 
+    let AggravateCount = 0;
+
     // get character stats
     CharacterStats.ATK = parseFloat(document.getElementById("atk2").value);
+    CharacterStats.EM = parseFloat(document.getElementById("em2").value);
     CharacterStats.CritRate = parseFloat(document.getElementById("cr2").value) / 100;
     CharacterStats.CritDmg = parseFloat(document.getElementById("cd2").value) / 100;
+    AggravateCount = parseFloat(document.getElementById("aggravatecount2").value);
     let GobletType = document.getElementById("goblet2").value;
     GobletType === "elec" ? (CharacterStats.ElectroDmg = 0.466, CharacterStats.PhysDmg = 0) 
     : (CharacterStats.PhysDmg = 0.583, CharacterStats.ElectroDmg = 0);
@@ -607,13 +646,14 @@ function GetValues2(){
         }
 
     
-    let damage = calc(CharacterStats, GobletType);
+        let aggravateCheck = document.getElementById("aggravate-check2").checked;
+        let damage = calc(CharacterStats, GobletType, AggravateCount, aggravateCheck);
 
     viewSetTwoDamage(damage)
 }
 
 
-function calc (CharacterStats, GobletType){
+function calc (CharacterStats, GobletType, AggravateCount, aggravateCheck){
     let cv = 1 + (CharacterStats.CritDmg * CharacterStats.CritRate)
     let enemyRes = 0.9;
     let enemyDef = 0.5;
@@ -647,8 +687,22 @@ function calc (CharacterStats, GobletType){
     let Burst = (CharacterStats.ATK * CharacterStats.BurstTalent) * (1 + (CharacterStats.ElectroDmg + CharacterStats.BurstBonus)) * 
     cv * enemyRes * enemyDef
 
-    let rotationDamage = (5 * (N1 + CA)) + Stilleto + SkillRecast + Burst + CharacterStats.WeaponProc
 
+    let TotalAggravateDamage;
+
+    if (aggravateCheck){
+        let AggravateBase = 1662.9 * ( 1 + ((5 * CharacterStats.EM) / (CharacterStats.EM + 1200)) + CharacterStats.ReactionBonus);
+
+        let AggravateDamage = AggravateBase * (1 + CharacterStats.ElectroDmg) * cv * enemyDef * enemyRes;
+    
+        TotalAggravateDamage = AggravateDamage * AggravateCount;
+    }
+    else{
+        TotalAggravateDamage = 0;
+    }
+
+
+    let rotationDamage = (5 * (N1 + CA)) + Stilleto + SkillRecast + Burst + CharacterStats.WeaponProc + TotalAggravateDamage;
 
 
     const Result = {
@@ -658,6 +712,7 @@ function calc (CharacterStats, GobletType){
         Skill2: SkillRecast,
         Burst: Burst,
         WeaponProc: CharacterStats.WeaponProc,
+        Aggravate: TotalAggravateDamage,
         Total: rotationDamage
     }
 
@@ -673,6 +728,7 @@ function viewSetOneDamage(damage){
     document.querySelector("#E1-set1").textContent = Math.round(damage.Skill)
     document.querySelector("#E2-set1").textContent = Math.round(damage.Skill2)
     document.querySelector("#Q-set1").textContent = Math.round(damage.Burst)
+    document.querySelector("#aggravate-set1").textContent = Math.round(damage.Aggravate)
     document.querySelector("#Total-set1").textContent = Math.round(damage.Total)
 }
 
@@ -684,8 +740,10 @@ function viewSetTwoDamage(damage){
     document.querySelector("#E1-set2").textContent = Math.round(damage.Skill)
     document.querySelector("#E2-set2").textContent = Math.round(damage.Skill2)
     document.querySelector("#Q-set2").textContent = Math.round(damage.Burst)
+    document.querySelector("#aggravate-set2").textContent = Math.round(damage.Aggravate)
     document.querySelector("#Total-set2").textContent = Math.round(damage.Total)
 }
+
 
 async function GetDifference(){
 

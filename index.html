@@ -13,7 +13,7 @@
 
     <body>
         <div class = "calcbody">
-            <div id = "calculator-view">
+            <div>
                 <div class="row">
                     <div class="col-md-6 keqing-image-container">
                         <img src ="Assets/Keqing-skin.png" class = "keqing-image">
@@ -28,6 +28,9 @@
                     <button class = "view-button about-view-btn">About</button>
                     <button class = "view-button basic-view-btn"> Calculator </button>
                 </div>
+            </div>
+
+            <div id = "calculator-view">
 
                 <div class="row">
                     <div class="col-md-6 text-center">
@@ -39,6 +42,11 @@
                             <div class = "row">
                                 <div class ="col-md-6"><label>Total Character Attack</label></div>
                                 <div class = "col-md-6"><input type = "number" id = "atk" name = "Total Character ATK:"></div>
+                            </div>
+
+                            <div class = "row">
+                                <div class ="col-md-6"><label>Character Elemental Mastery</label></div>
+                                <div class = "col-md-6"><input type = "number" id = "em" name = "Total Character EM:" value = 0></div>
                             </div>
             
                             <div class="row">
@@ -121,6 +129,7 @@
                                         <option value="PaleFlame2p">2-Piece Pale Flame</option>
                                         <option value="BSC2p">2-Piece Bloodstained Chivalry</option>
                                         <option value="Noblesse2p">2-Piece Noblesse Oblige</option>
+                                        <option value="ThunderingFury4p">4-Piece Thundering Fury</option>
                                         <option value="PaleFlame4p">4-Piece Pale Flame</option>
                                         <option value="Thundersoother4p">4-Piece Thundersoother</option>
                                         <option value="Gladiator4p">4-Piece Gladiator's Finale</option>
@@ -170,6 +179,21 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <div class ="row" style = "margin-top: 12px; margin-bottom: 12px;">
+                                <div class ="col-md-6">
+                                    Aggravate Reaction
+                                </div>
+                                <div class ="col-md-6">
+                                    <input type ="checkbox" id="aggravate-check1">
+                                </div>
+                            </div>
+
+                            <div class = "row aggravate-row1">
+                                <div class ="col-md-6"><label>Total Aggravate Hits</label></div>
+                                <div class = "col-md-6"><input type = "number" id = "aggravatecount" value = 10 name = "Total Aggravate Hits:"></div>
+                            </div>
+
                             <div class = "row">
                                 <div class = "col-md-6">Display Damage As</div>
                                 <div class = "col-md-6">
@@ -191,6 +215,11 @@
                             <div class = "row">
                                 <div class ="col-md-6"><label>Total Character Attack</label></div>
                                 <div class = "col-md-6"><input type = "number" id = "atk2" name = "Total Character ATK:"></div>
+                            </div>
+
+                            <div class = "row">
+                                <div class ="col-md-6"><label>Character Elemental Mastery</label></div>
+                                <div class = "col-md-6"><input type = "number" id = "em2" name = "Total Character EM:" value = 0></div>
                             </div>
             
                             <div class="row">
@@ -274,6 +303,7 @@
                                         <option value="BSC2p">2-Piece Bloodstained Chivalry</option>
                                         <option value="Noblesse2p">2-Piece Noblesse Oblige</option>
                                         <option value="PaleFlame4p">4-Piece Pale Flame</option>
+                                        <option value="ThunderingFury4p">4-Piece Thundering Fury</option>
                                         <option value="Thundersoother4p">4-Piece Thundersoother</option>
                                         <option value="Gladiator4p">4-Piece Gladiator's Finale</option>
                                         <option value="Shimenawa4p">4-Piece Shimenawa's Reminiscence</option>
@@ -321,6 +351,21 @@
                                         <option value="4">Refinement 5</option>
                                     </select> </div>
                             </div>
+
+                            <div class ="row" style = "margin-top: 12px; margin-bottom: 12px;">
+                                <div class ="col-md-6">
+                                    Aggravate Reaction
+                                </div>
+                                <div class ="col-md-6">
+                                    <input type ="checkbox" id="aggravate-check2">
+                                </div>
+                            </div>
+
+                            <div class = "row aggravate-row2">
+                                <div class ="col-md-6"><label>Total Aggravate Hits</label></div>
+                                <div class = "col-md-6"><input type = "number" id = "aggravatecount2" value = 10 name = "Total Aggravate Hits:"></div>
+                            </div>
+
                             <div class = "row">
                                 <div class = "col-md-6">Display Damage As</div>
                                 <div class = "col-md-6">
@@ -350,28 +395,31 @@
                     <div style="text-align: center" class="row">
                         <div class="col-sm-1"></div>                
                         <div class="col-sm-1"><p>N1</p></div>
-                        <div class="col-sm-2"><p>CA</p></div>
+                        <div class="col-sm-1"><p>CA</p></div>
                         <div class="col-sm-2"><p>Skill Cast</p></div>
                         <div class="col-sm-2"><p>Skill Recast</p></div>
                         <div class="col-sm-2"><p>Burst Damage</p></div>
+                        <div class="col-sm-1">Aggravate</div>   
                         <div class="col-sm-2"><p>Total Rotation Damage</p></div>
                     </div>
                     <div style="text-align: center" class="row">
                         <div class="col-sm-1"><p>Set One Numbers:</p></div>                
                         <div class="col-sm-1"><p id = "NA-set1"></p></div>
-                        <div class="col-sm-2"><p id = "CA-set1"></p></div>
+                        <div class="col-sm-1"><p id = "CA-set1"></p></div>
                         <div class="col-sm-2"><p id = "E1-set1"></p></div>
                         <div class="col-sm-2"><p id = "E2-set1"></p></div>
                         <div class="col-sm-2"><p id = "Q-set1"></p></div>
+                        <div class="col-sm-1"><p id = "aggravate-set1"></p></div>
                         <div class="col-sm-2"><p id = "Total-set1"></p></div>
                     </div>
                     <div style="text-align: center" class="row">
                         <div class="col-sm-1"><p>Set Two Numbers:</p></div>                
                         <div class="col-sm-1"><p id = "NA-set2"></p></div>
-                        <div class="col-sm-2"><p id = "CA-set2"></p></div>
+                        <div class="col-sm-1"><p id = "CA-set2"></p></div>
                         <div class="col-sm-2"><p id = "E1-set2"></p></div>
                         <div class="col-sm-2"><p id = "E2-set2"></p></div>
                         <div class="col-sm-2"><p id = "Q-set2"></p></div>
+                        <div class="col-sm-1"><p id = "aggravate-set2"></p></div>
                         <div class="col-sm-2"><p id = "Total-set2"></p></div>
                     </div>
                 </div>
@@ -382,20 +430,6 @@
             </div>
 
             <div id = "about-view">
-                <div class="row">
-                    <div class="col-md-6 keqing-image-container">
-                        <img src ="Assets/Keqing-skin.png" class = "keqing-image">
-                    </div>
-                    <div class="col-md-6"  style = "text-align: center;">
-                        <h2>Keqing Gear Comparision Calculator</h2>
-                        <p>By 3b00d_09#2235</p>
-                    </div>
-                </div>
-                
-                <div>
-                    <button class = "view-button about-view-btn"> About</button>
-                    <button class = "view-button basic-view-btn">Calculator</button>
-                </div>
 
                 <div class = "about">
                     <h1>About</h1>
@@ -421,6 +455,11 @@
                                     The 15% Crit Rate from her Ascension 4 buff has to be inputted manually.
                                 </li>
                                 <li>
+                                    For Aggravate count, standard non-4TF Keqing Aggravates 11 times in a single Skill > Burst 
+                                    > Skill > 5 N1C Combo. 4TF Keqing gets 12 Aggravates in a Skill > Burst > Skill > N1C N1 >
+                                    Skill > 2 N1C Combo. 
+                                </li>
+                                <li>
                                     Your Goblet type is the same as your Infusion type (ex: Physical goblet means Physical Keqing)
                                 </li>
                                 <li>
@@ -438,12 +477,14 @@
                                 </li>
                                 <li>
                                     "Total Rotation Damage" is 1 Skill, 1 Burst, 1 Skill Recast, and 5 Normal into Charged Attacks. Includes weapon 
-                                    passive procs if valid.
+                                    passive procs if valid. 4TF uses the same rotation as non-4TF combos. If you use 4TF, looking at individual
+                                    hit damage is more accurate compared to "Total Rotation Damage".
                                 </li>
                             </ul>
                         </div>
             
             </div>
+
 
         </div>
     </body>
