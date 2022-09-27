@@ -688,12 +688,13 @@ function calc (CharacterStats, GobletType, AggravateCount, aggravateCheck){
     cv * enemyRes * enemyDef
 
 
+    let AggravateDamage = 0;
     let TotalAggravateDamage;
 
     if (aggravateCheck){
         let AggravateBase = 1662.9 * ( 1 + ((5 * CharacterStats.EM) / (CharacterStats.EM + 1200)) + CharacterStats.ReactionBonus);
 
-        let AggravateDamage = AggravateBase * (1 + CharacterStats.ElectroDmg) * cv * enemyDef * enemyRes;
+        AggravateDamage = AggravateBase * (1 + CharacterStats.ElectroDmg) * cv * enemyDef * enemyRes;
     
         TotalAggravateDamage = AggravateDamage * AggravateCount;
     }
@@ -712,7 +713,7 @@ function calc (CharacterStats, GobletType, AggravateCount, aggravateCheck){
         Skill2: SkillRecast,
         Burst: Burst,
         WeaponProc: CharacterStats.WeaponProc,
-        Aggravate: TotalAggravateDamage,
+        Aggravate: AggravateDamage,
         Total: rotationDamage
     }
 
